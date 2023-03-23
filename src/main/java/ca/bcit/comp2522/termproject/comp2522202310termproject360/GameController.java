@@ -7,6 +7,7 @@ public class GameController {
     @FXML
     private Label welcomeText;
 
+    // all of these are tests, will probably be removed or altered.
     @FXML
     public int num = 1;
 
