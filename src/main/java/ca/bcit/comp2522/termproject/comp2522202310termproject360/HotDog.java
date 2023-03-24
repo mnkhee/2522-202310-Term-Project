@@ -4,8 +4,13 @@ public class HotDog implements Item {
 
     double cost = 1.25;
 
-    @Override
-    public int getPassiveIncome() {
-        return 0;
+    public HotDog() {
     }
+
+    @Override
+    public double getPassiveIncome() {
+        return this.cost;
+    }
+
+
 }
