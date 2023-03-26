@@ -9,10 +9,11 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 
 public class GameController {
+    HotDog hotdog = new HotDog();
+    Player player = new Player();
 
     Timeline timeline;
     public Button hotdogButton;
-    HotDog hotdog = new HotDog();
     @FXML
     private Label welcomeText;
 
@@ -28,15 +29,16 @@ public class GameController {
     @FXML
     protected void incrementCounter() {
         welcomeText.setText("Total Hot dog Production: " + num);
-        totalRevenue.setText("Total Revenue: " + this.rev);
-        this.rev++;
+        totalRevenue.setText("Total Revenue: " + player.totalRevenue());
+        player.receiveRevenue(rev);
     }
 
     @FXML
     protected void incrementHotDog() {
         hotdog.passiveIncrement();
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), actionEvent -> {
-            totalRevenue.setText("Total Revenue: " + hotdog.getPassiveIncome());
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
+            player.receiveRevenue(hotdog.getPassiveIncome());
+            totalRevenue.setText("Total Revenue: " + player.totalRevenue());
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

@@ -29,9 +29,8 @@ public class HotDog implements Item {
 
     public void passiveIncrement() {
         timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), actionEvent -> {
-            gameController = new GameController();
-            passiveValue += 0.5;
-            setPassiveValue(this.passiveValue);
+            //passiveValue += 0.5;
+            //setPassiveValue(this.passiveValue);
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
