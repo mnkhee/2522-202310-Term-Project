@@ -12,7 +12,7 @@ public class GameDriver extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameDriver.class.getResource("game-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setTitle("Cookie Clicker");
+        stage.setTitle("Costco Clicker");
         stage.setScene(scene);
         stage.show();
     }
