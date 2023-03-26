@@ -28,9 +28,9 @@ public class GameController {
 
     @FXML
     protected void incrementCounter() {
+        player.receiveRevenue(rev);
         welcomeText.setText("Total Hot dog Production: " + num);
         totalRevenue.setText("Total Revenue: " + player.totalRevenue());
-        player.receiveRevenue(rev);
     }
 
     @FXML
