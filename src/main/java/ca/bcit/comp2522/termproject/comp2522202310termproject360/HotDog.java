@@ -11,8 +11,8 @@ import javafx.util.Duration;
 
 public class HotDog implements Item {
     GameController gameController;
-    double cost = 1.25;
-    double passiveValue = 0.5;
+    double cost = 50;
+    double passiveValue = 1.25;
     private Timeline timeline;
 
     public HotDog() {
@@ -28,7 +28,7 @@ public class HotDog implements Item {
     }
 
     public void passiveIncrement() {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), actionEvent -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
             //passiveValue += 0.5;
             //setPassiveValue(this.passiveValue);
         }));

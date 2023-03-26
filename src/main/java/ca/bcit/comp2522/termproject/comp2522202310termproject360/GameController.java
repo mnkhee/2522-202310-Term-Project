@@ -29,8 +29,19 @@ public class GameController {
     @FXML
     protected void incrementCounter() {
         player.receiveRevenue(rev);
-        welcomeText.setText("Total Hot dog Production: " + num);
         totalRevenue.setText("Total Revenue: " + player.totalRevenue());
+    }
+
+    @FXML
+    protected void confirmAmount() {
+        if (player.totalRevenue() < 50) {
+            welcomeText.setText("no");
+        } else {
+            welcomeText.setText("Purchased hotdog");
+            player.decrementRevenue(50);
+            totalRevenue.setText("Total Revenue: " + player.totalRevenue());
+            incrementHotDog();
+        }
     }
 
     @FXML
@@ -44,9 +55,4 @@ public class GameController {
         timeline.play();
     }
 
-//    @FXML
-//    protected void Click() {
-//        this.rev = 0;
-//        totalRevenue.setText("Total Revenue: " + rev);
-//    }
 }

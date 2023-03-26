@@ -15,4 +15,8 @@ public class Player {
         this.playerRevenue += receiveValue;
     }
 
+    void decrementRevenue(double receiveValue) {
+        this.playerRevenue -= receiveValue;
+    }
+
 }
