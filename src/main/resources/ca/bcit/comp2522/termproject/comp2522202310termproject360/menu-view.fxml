@@ -10,7 +10,7 @@
     </padding>
     <children>
         <VBox alignment="CENTER" spacing="20">
-            <Label text="Welcome to the Game" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS';"/>
+            <Label text="Welcome to Costco Clicker" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS';"/>
             <VBox alignment="CENTER" spacing="20">
                 <HBox spacing="50" alignment="BOTTOM_CENTER" style="-fx-padding: 0 0 20 0">
                     <Button text="Start" onAction="#startGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;"/>
