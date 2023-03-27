@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.comp2522202310termproject360.MenuController">
+    <padding>
+        <Insets top="200" right="50" bottom="100" left="50"/>
+    </padding>
+    <children>
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Welcome to the Game" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS';"/>
+            <VBox alignment="CENTER" spacing="20">
+                <HBox spacing="50" alignment="BOTTOM_CENTER" style="-fx-padding: 0 0 20 0">
+                    <Button text="Start" onAction="#startGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;"/>
+                    <Button text="Quit" onAction="#quitGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </children>
+</VBox>

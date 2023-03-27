@@ -16,6 +16,8 @@ public class GameController {
     public Button hotdogButton;
     @FXML
     private Label welcomeText;
+    @FXML
+    private Label hotdogCount;
 
     // all of these are tests, will probably be removed or altered.
     @FXML
@@ -41,11 +43,13 @@ public class GameController {
             player.decrementRevenue(50);
             totalRevenue.setText("Total Revenue: " + player.totalRevenue());
             incrementHotDog();
+            hotdogCount.setText("Hotdogs: " + hotdog.getCount());
         }
     }
 
     @FXML
     protected void incrementHotDog() {
+        hotdog.incrementCount();
         hotdog.passiveIncrement();
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
             player.receiveRevenue(hotdog.getPassiveIncome());

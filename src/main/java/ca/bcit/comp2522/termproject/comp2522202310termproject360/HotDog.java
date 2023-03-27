@@ -14,6 +14,7 @@ public class HotDog implements Item {
     double cost = 50;
     double passiveValue = 1.25;
     private Timeline timeline;
+    private int count = 0;
 
     public HotDog() {
     }
@@ -34,6 +35,13 @@ public class HotDog implements Item {
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+    }
+    public int getCount() {
+        return this.count;
+    }
+
+    public void incrementCount() {
+        this.count++;
     }
 
 }
