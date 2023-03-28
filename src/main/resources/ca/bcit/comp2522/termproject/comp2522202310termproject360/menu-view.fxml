@@ -15,6 +15,8 @@
                 <HBox spacing="50" alignment="BOTTOM_CENTER" style="-fx-padding: 0 0 20 0">
                     <Button text="Start" onAction="#startGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;"/>
                     <Button text="Quit" onAction="#quitGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;"/>
+                    <Button text="Save" onAction="#saveGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;"/>
+                    <Button text="Load" onAction="#loadGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;"/>
                 </HBox>
             </VBox>
         </VBox>

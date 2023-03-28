@@ -48,7 +48,7 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    public void quitGame(ActionEvent event) throws URISyntaxException {
+    public void quitGame(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to quit?");
         alert.setTitle("Quit");
         Optional<ButtonType> result = alert.showAndWait();
@@ -56,6 +56,14 @@ public class MenuController implements Initializable {
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
         }
+    }
+    @FXML
+    public void saveGame(ActionEvent event) {
+        // save game data to a file
+    }
+    @FXML
+    public void loadGame(ActionEvent event) {
+        // load game data from a file and resume the game
     }
 }
 
