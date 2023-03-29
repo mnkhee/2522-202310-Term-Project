@@ -79,7 +79,7 @@ public class GameController {
         }
         if (player.totalRevenue() >= 1000) {
             friesUpgrade.setVisible(true);
-            friesUpgrade.setText("Fries\nPrice: $" + fries.getCost());
+            friesUpgrade.setText("Fries (" + fries.getCount() + ")\nPrice: $" + fries.getCost());
         }
     }
 
