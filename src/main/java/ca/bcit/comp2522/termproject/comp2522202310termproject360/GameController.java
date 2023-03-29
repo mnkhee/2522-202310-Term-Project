@@ -11,8 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 
 import javafx.util.Duration;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class GameController {
     HotDog hotdog = new HotDog();
@@ -38,7 +36,7 @@ public class GameController {
 
 
     public GameController() {
-        this.clickerValue = player.getClickerValue();
+        this.clickerValue = player.getClickerValue(); // default = 1
     }
 
     // method runs as soon as program runs
@@ -57,7 +55,7 @@ public class GameController {
 
     // method for tooltips (hovering over buttons will display a message. not sure what to do with this tbh)
     public void tooltips() {
-        double hotdogIncome = (hotdog.getPassiveIncome() * hotdog.getCount() - 1.25);
+        double hotdogIncome = (hotdog.getPassiveIncome() * hotdog.getCount());
         hotdogUpgrade.setTooltip(new Tooltip("Hotdogs are producing $" + hotdogIncome + " per second"));
     }
 
@@ -72,10 +70,11 @@ public class GameController {
     // checks if user has enough revenue to buy an upgrade
     @FXML
     protected void checkForUpgradability() {
-        if (player.totalRevenue() == 50) {
+        if (player.totalRevenue() >= 50) {
             hotdogUpgrade.setVisible(true);
-            hotdogUpgrade.setText("Hot dog\nPrice: $" + hotdog.getCost());
-        } else if (player.totalRevenue() == 1000) {
+            hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")\nPrice: $" + hotdog.getCost());
+        }
+        if (player.totalRevenue() >= 1000) {
             friesUpgrade.setVisible(true);
             friesUpgrade.setText("Fries\nPrice: $N/A");
         }
@@ -90,6 +89,8 @@ public class GameController {
             purchaseText.setText("Purchased hotdog");
             player.decrementRevenue(hotdog.getCost()); // decrements revenue by cost of hotdog
             hotdog.setCost(hotdog.getCost() + 5);
+            //hotdog.addToPassiveValue(1.25);
+            hotdog.incrementCount();
             totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
             hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")\nPrice: $" + hotdog.getCost());
             incrementHotDog();
@@ -99,11 +100,11 @@ public class GameController {
     // increments total revenue automatically
     @FXML
     protected void incrementHotDog() {
-        hotdog.incrementCount();
+        player.receiveRevenue(hotdog.getPassiveIncome());
         tooltips();
         timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> {
-            System.out.println(player.totalRevenue());
             player.receiveRevenue(hotdog.getPassiveIncome());
+            System.out.println(player.totalRevenue());
             totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
         }));
         timeline.setCycleCount(Animation.INDEFINITE);

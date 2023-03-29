@@ -3,7 +3,6 @@ package ca.bcit.comp2522.termproject.comp2522202310termproject360;
 public class HotDog implements Item {
     private double cost;
     private double passiveValue;
-    Player player;
     private int count;
 
     public HotDog() {
@@ -34,7 +33,7 @@ public class HotDog implements Item {
 
     @Override
     public int getCount() {
-        return this.count + 1;
+        return this.count;
     }
 
     @Override
