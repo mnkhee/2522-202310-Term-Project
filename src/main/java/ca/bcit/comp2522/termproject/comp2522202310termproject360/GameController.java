@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
 
 public class GameController {
@@ -37,6 +38,13 @@ public class GameController {
     public void hideButtons() {
         initialize.setVisible(false);
         hotdogUpgrade.setVisible(false);
+        tooltips();
+    }
+
+    // method for tooltips (hovering over buttons will display a message. not sure what to do with this tbh)
+    public void tooltips() {
+        double hotdogIncome = (hotdog.getPassiveIncome() * hotdog.getCount() - 1.25);
+        hotdogUpgrade.setTooltip(new Tooltip("Hotdogs are producing $" + hotdogIncome + " per second"));
     }
 
     @FXML
@@ -69,6 +77,7 @@ public class GameController {
     @FXML
     protected void incrementHotDog() {
         hotdog.incrementCount();
+        tooltips();
         timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> {
             System.out.println(player.totalRevenue());
             player.receiveRevenue(hotdog.getPassiveIncome());
