@@ -40,7 +40,6 @@ public class GameController {
             purchaseText.setText("Purchased hotdog");
             player.decrementRevenue(hotdog.getCost()); // decrements revenue by cost of hotdog
             totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
-            hotdog.incrementHotdogsOwned();
             hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")");
             incrementHotDog();
         }

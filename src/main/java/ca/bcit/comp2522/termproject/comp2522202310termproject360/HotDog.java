@@ -1,12 +1,5 @@
 package ca.bcit.comp2522.termproject.comp2522202310termproject360;
 
-import javafx.animation.Animation;
-
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
-
-import javafx.util.Duration;
-
 public class HotDog implements Item {
     private double cost;
     private double passiveValue;
@@ -25,24 +18,19 @@ public class HotDog implements Item {
         return this.passiveValue;
     }
 
+    @Override
     public void addToPassiveValue(double passiveValue) {
         this.passiveValue += passiveValue;
     }
 
+    @Override
     public double getCost() {
         return this.cost;
     }
 
+    @Override
     public void setCost(double cost) {
         this.cost = cost;
-    }
-
-    public double hotdogsOwned() {
-        return this.hotdogsOwned;
-    }
-
-    public void incrementHotdogsOwned() {
-        this.hotdogsOwned++;
     }
 
     public void passiveIncrement() {
@@ -53,10 +41,12 @@ public class HotDog implements Item {
 //        timeline.setCycleCount(Animation.INDEFINITE);
 //        timeline.play();
     }
+    @Override
     public int getCount() {
         return this.count + 1;
     }
 
+    @Override
     public void incrementCount() {
         this.count++;
     }
