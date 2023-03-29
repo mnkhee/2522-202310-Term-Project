@@ -11,25 +11,48 @@ import javafx.util.Duration;
 public class GameController {
     HotDog hotdog = new HotDog();
     Player player = new Player();
-
     Timeline timeline;
     public Button hotdogButton;
     @FXML
     private Label purchaseText;
-    @FXML
-    private Label hotdogCount;
-
     public Button hotdogUpgrade;
-
     @FXML
-    public double rev = player.getClickerValue(); // probably make a clicker class?
+    public double clickerValue;
     @FXML
     private Label totalRevenue;
 
     @FXML
+    private Button initialize;
+
+
+    public GameController() {
+        this.clickerValue = player.getClickerValue();
+    }
+
+    public void initialize() {
+        initialize.fire();
+    }
+
+    @FXML
+    public void hideButtons() {
+        initialize.setVisible(false);
+        hotdogUpgrade.setVisible(false);
+    }
+
+    @FXML
     protected void incrementCounter() {
-        player.receiveRevenue(rev);
+        player.receiveRevenue(clickerValue);
         totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
+        checkForUpgradability();
+    }
+    @FXML
+    protected void checkForUpgradability() {
+        if (player.totalRevenue() < 50 && hotdog.getCount() <= 1) {
+            hotdogUpgrade.setVisible(false);
+        } else {
+            hotdogUpgrade.setVisible(true);
+            hotdogUpgrade.setText("Hot dog\nPrice: $" + hotdog.getCost());
+        }
     }
 
     @FXML
@@ -40,7 +63,7 @@ public class GameController {
             purchaseText.setText("Purchased hotdog");
             player.decrementRevenue(hotdog.getCost()); // decrements revenue by cost of hotdog
             totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
-            hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")");
+            hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")\nPrice: $" + hotdog.getCost());
             incrementHotDog();
         }
     }

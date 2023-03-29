@@ -34,4 +34,5 @@
             <Font name="Comic Sans MS" size="28.0" />
         </font>
     </Label>
+    <Button fx:id="initialize" onAction="#hideButtons"/>
 </AnchorPane>

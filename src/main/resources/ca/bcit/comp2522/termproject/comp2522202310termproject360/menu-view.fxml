@@ -30,7 +30,7 @@
                </HBox.margin>
                 </ImageView>
                 <VBox alignment="CENTER" spacing="20">
-                    <Button onAction="#startGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Start" textFill="#721e96" />
+                    <Button id="startBtn" onAction="#startGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Start" textFill="#721e96" />
                     <Button onAction="#saveGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Save" textFill="#721e96" />
                     <Button onAction="#loadGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Load" textFill="#6e1e94" />
                     <Button onAction="#quitGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Quit" textFill="#721e96" />
