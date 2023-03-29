@@ -19,6 +19,8 @@ public class GameController {
     @FXML
     private Label hotdogCount;
 
+    public Button hotdogUpgrade;
+
     @FXML
     public double rev = player.getClickerValue(); // probably make a clicker class?
     @FXML
@@ -35,13 +37,12 @@ public class GameController {
         if (player.totalRevenue() < hotdog.getCost()) { // checks if player has enough revenue to purchase a hotdog
             purchaseText.setText("no"); // change, ofc
         } else {
-            System.out.println(hotdog.getCost());
             purchaseText.setText("Purchased hotdog");
             player.decrementRevenue(hotdog.getCost()); // decrements revenue by cost of hotdog
             totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
-            incrementHotDog();
             hotdog.incrementHotdogsOwned();
-            hotdogCount.setText("Hotdogs: " + hotdog.getCount());
+            hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")");
+            incrementHotDog();
         }
     }
 
