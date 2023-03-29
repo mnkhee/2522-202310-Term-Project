@@ -29,10 +29,11 @@
             <Font name="Comic Sans MS" size="42.0" />
         </font>
     </Text>
-    <Label fx:id="totalRevenue" layoutX="64.0" layoutY="118.0" text="Total Revenue: $0.0" textAlignment="CENTER">
+    <Label fx:id="totalRevenue" layoutX="36.0" layoutY="116.0" text="Total Revenue: $0.0" textAlignment="CENTER">
         <font>
             <Font name="Comic Sans MS" size="28.0" />
         </font>
     </Label>
     <Button fx:id="initialize" onAction="#hideButtons" />
+   <Button fx:id="friesUpgrade" layoutX="1072.0" layoutY="155.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="167.0" stylesheets="@../../../../../css/stylesheet.css" text="Fries" />
 </AnchorPane>
