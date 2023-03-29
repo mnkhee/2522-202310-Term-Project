@@ -47,16 +47,14 @@ public class GameController {
     }
     @FXML
     protected void checkForUpgradability() {
-        if (player.totalRevenue() < 50 && hotdog.getCount() <= 1) {
-            hotdogUpgrade.setVisible(false);
-        } else {
+        if (player.totalRevenue() == 50) {
             hotdogUpgrade.setVisible(true);
             hotdogUpgrade.setText("Hot dog\nPrice: $" + hotdog.getCost());
         }
     }
 
     @FXML
-    protected void confirmAmount() {
+    protected void confirmHotdogAmount() {
         if (player.totalRevenue() < hotdog.getCost()) { // checks if player has enough revenue to purchase a hotdog
             purchaseText.setText("no"); // change, ofc
         } else {
