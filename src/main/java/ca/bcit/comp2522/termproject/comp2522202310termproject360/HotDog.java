@@ -54,7 +54,7 @@ public class HotDog implements Item {
 //        timeline.play();
     }
     public int getCount() {
-        return this.count;
+        return this.count + 1;
     }
 
     public void incrementCount() {
