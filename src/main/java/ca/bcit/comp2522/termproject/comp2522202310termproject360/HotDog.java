@@ -1,8 +1,6 @@
 package ca.bcit.comp2522.termproject.comp2522202310termproject360;
 
 import javafx.animation.Animation;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
@@ -10,13 +8,16 @@ import javafx.animation.KeyFrame;
 import javafx.util.Duration;
 
 public class HotDog implements Item {
-    GameController gameController;
-    double cost = 50;
-    double passiveValue = 1.25;
-    private Timeline timeline;
+    private double cost;
+    private double passiveValue;
+
+    private double hotdogsOwned;
+    Player player;
     private int count = 0;
 
     public HotDog() {
+        this.cost = 50;
+        this.passiveValue = 1.25;
     }
 
     @Override
@@ -24,17 +25,33 @@ public class HotDog implements Item {
         return this.passiveValue;
     }
 
-    public void setPassiveValue(double passiveValue) {
-        this.passiveValue = passiveValue;
+    public void addToPassiveValue(double passiveValue) {
+        this.passiveValue += passiveValue;
+    }
+
+    public double getCost() {
+        return this.cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public double hotdogsOwned() {
+        return this.hotdogsOwned;
+    }
+
+    public void incrementHotdogsOwned() {
+        this.hotdogsOwned++;
     }
 
     public void passiveIncrement() {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
-            //passiveValue += 0.5;
-            //setPassiveValue(this.passiveValue);
-        }));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+//        timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
+//            //passiveValue += 0.5;
+//            //setPassiveValue(this.passiveValue);
+//        }));
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.play();
     }
     public int getCount() {
         return this.count;
@@ -43,5 +60,4 @@ public class HotDog implements Item {
     public void incrementCount() {
         this.count++;
     }
-
 }

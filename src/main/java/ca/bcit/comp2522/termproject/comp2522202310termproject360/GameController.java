@@ -15,45 +15,44 @@ public class GameController {
     Timeline timeline;
     public Button hotdogButton;
     @FXML
-    private Label welcomeText;
+    private Label purchaseText;
     @FXML
     private Label hotdogCount;
 
-    // all of these are tests, will probably be removed or altered.
-    @FXML
-    public double num = hotdog.getPassiveIncome();
+    public Button hotdogUpgrade;
 
     @FXML
-    public double rev = 1;
+    public double rev = player.getClickerValue(); // probably make a clicker class?
     @FXML
     private Label totalRevenue;
 
     @FXML
     protected void incrementCounter() {
         player.receiveRevenue(rev);
-        totalRevenue.setText("Total Revenue: " + player.totalRevenue());
+        totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
     }
 
     @FXML
     protected void confirmAmount() {
-        if (player.totalRevenue() < 50) {
-            welcomeText.setText("no");
+        if (player.totalRevenue() < hotdog.getCost()) { // checks if player has enough revenue to purchase a hotdog
+            purchaseText.setText("no"); // change, ofc
         } else {
-            welcomeText.setText("Purchased hotdog");
-            player.decrementRevenue(50);
-            totalRevenue.setText("Total Revenue: " + player.totalRevenue());
+            purchaseText.setText("Purchased hotdog");
+            player.decrementRevenue(hotdog.getCost()); // decrements revenue by cost of hotdog
+            totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
+            hotdog.incrementHotdogsOwned();
+            hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")");
             incrementHotDog();
-            hotdogCount.setText("Hotdogs: " + hotdog.getCount());
         }
     }
 
     @FXML
     protected void incrementHotDog() {
         hotdog.incrementCount();
-        hotdog.passiveIncrement();
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
+        timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> {
+            System.out.println(player.totalRevenue());
             player.receiveRevenue(hotdog.getPassiveIncome());
-            totalRevenue.setText("Total Revenue: " + player.totalRevenue());
+            totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
