@@ -15,6 +15,7 @@ import javafx.util.Duration;
 public class GameController {
     HotDog hotdog = new HotDog();
     Player player = new Player();
+    Fries fries = new Fries();
     Timeline timeline;
     @FXML
     private Label totalRevenue;
@@ -56,7 +57,9 @@ public class GameController {
     // method for tooltips (hovering over buttons will display a message. not sure what to do with this tbh)
     public void tooltips() {
         double hotdogIncome = (hotdog.getPassiveIncome() * hotdog.getCount());
+        double friesIncome = (fries.getPassiveIncome() * fries.getCount());
         hotdogUpgrade.setTooltip(new Tooltip("Hotdogs are producing $" + hotdogIncome + " per second"));
+        friesUpgrade.setTooltip(new Tooltip("Fries are producing $" + friesIncome + " per second"));
     }
 
     // increments total revenue by clicker value
@@ -84,31 +87,44 @@ public class GameController {
     @FXML
     protected void confirmHotdogAmount() {
         if (player.totalRevenue() < hotdog.getCost()) { // checks if player has enough revenue to purchase a hotdog
-            purchaseText.setText("no"); // change, ofc
+            purchaseText.setText("Not enough money to buy Hotdog"); // change, ofc
         } else {
+            hotdog.setPassiveValue(1.25);
             purchaseText.setText("Purchased hotdog");
             player.decrementRevenue(hotdog.getCost()); // decrements revenue by cost of hotdog
             hotdog.setCost(hotdog.getCost() + 5);
-            //hotdog.addToPassiveValue(1.25);
             hotdog.incrementCount();
-            totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
             hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")\nPrice: $" + hotdog.getCost());
-            incrementHotDog();
+            incrementRevenue();
+        }
+    }
+
+    @FXML
+    protected void confirmFriesAmount() {
+        if (player.totalRevenue() < fries.getCost()) {
+            purchaseText.setText("Not enough money to buy fries");
+        } else {
+            fries.setPassiveValue(5.00);
+            purchaseText.setText("Purchased Fries");
+            player.decrementRevenue(fries.getCost());
+            fries.setCost(fries.getCost() + 250);
+            fries.incrementCount();
+            friesUpgrade.setText("Fries (" + fries.getCount() + ")\nPrice: $" + fries.getCost());
+            incrementRevenue();
         }
     }
 
     // increments total revenue automatically
     @FXML
-    protected void incrementHotDog() {
-        player.receiveRevenue(hotdog.getPassiveIncome());
+    protected void incrementRevenue() {
         tooltips();
         timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> {
             player.receiveRevenue(hotdog.getPassiveIncome());
+            player.receiveRevenue(fries.getPassiveIncome());
             System.out.println(player.totalRevenue());
             totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
-
 }

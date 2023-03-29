@@ -4,7 +4,7 @@ public interface Item {
 
     double getPassiveIncome();
 
-    void addToPassiveValue(double passiveValue);
+    void setPassiveValue(double passiveValue);
 
     double getCost();
 

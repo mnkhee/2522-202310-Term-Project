@@ -8,7 +8,7 @@ public class HotDog implements Item {
     public HotDog() {
         this.count = 0;
         this.cost = 50;
-        this.passiveValue = 1.25;
+        this.passiveValue = 0;
     }
 
     @Override
@@ -17,8 +17,8 @@ public class HotDog implements Item {
     }
 
     @Override
-    public void addToPassiveValue(double passiveValue) {
-        this.passiveValue += passiveValue;
+    public void setPassiveValue(double passiveValue) {
+        this.passiveValue = passiveValue;
     }
 
     @Override

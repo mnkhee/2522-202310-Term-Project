@@ -6,7 +6,7 @@ public class Fries implements Item {
     private int count;
     public Fries() {
         this.cost = 1000;
-        this.passiveValue = 5.00;
+        this.passiveValue = 0;
         this.count = 0;
     }
     @Override
@@ -15,27 +15,27 @@ public class Fries implements Item {
     }
 
     @Override
-    public void addToPassiveValue(double passiveValue) {
-        this.passiveValue += passiveValue;
+    public void setPassiveValue(double passiveValue) {
+        this.passiveValue = passiveValue;
     }
 
     @Override
     public double getCost() {
-        return 0;
+        return this.cost;
     }
 
     @Override
     public void setCost(double cost) {
-
+        this.cost = cost;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return this.count;
     }
 
     @Override
     public void incrementCount() {
-
+        this.count++;
     }
 }

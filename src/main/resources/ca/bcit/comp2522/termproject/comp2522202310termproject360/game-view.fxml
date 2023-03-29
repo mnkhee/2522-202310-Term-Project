@@ -35,5 +35,5 @@
         </font>
     </Label>
     <Button fx:id="initialize" onAction="#hideButtons" />
-   <Button fx:id="friesUpgrade" layoutX="1072.0" layoutY="155.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="167.0" stylesheets="@../../../../../css/stylesheet.css" text="Fries" />
+   <Button fx:id="friesUpgrade" layoutX="1072.0" layoutY="155.0" mnemonicParsing="false" onAction= "#confirmFriesAmount" prefHeight="74.0" prefWidth="167.0" stylesheets="@../../../../../css/stylesheet.css" text="Fries" />
 </AnchorPane>
