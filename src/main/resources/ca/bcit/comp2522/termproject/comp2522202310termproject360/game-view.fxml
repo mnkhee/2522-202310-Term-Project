@@ -43,4 +43,5 @@
          <Font name="Comic Sans MS" size="20.0" />
       </font>
    </Label>
+   <Separator layoutX="348.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="723.0" prefWidth="15.0" />
 </AnchorPane>
