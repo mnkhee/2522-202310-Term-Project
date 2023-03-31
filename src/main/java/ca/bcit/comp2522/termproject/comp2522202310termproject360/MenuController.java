@@ -76,58 +76,56 @@ public class MenuController implements Initializable {
     @FXML
     public void saveGame(ActionEvent event) {
         try {
-            File file = new File("game_data.ser");
-            FileOutputStream fileOut = new FileOutputStream(file);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            File file = new File("game_data.txt");
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             // Save player data
-            Player player = new Player();
-            out.writeObject(player.totalRevenue());
-            out.writeObject(player.getClickerValue());
+            Player player = GameController.getInstance().getPlayer();
+            bufferedWriter.write(player.totalRevenue() + "\n");
+            bufferedWriter.write(player.getClickerValue() + "\n");
 
             // Save fries data
-            Fries fries = new Fries();
-            out.writeObject(fries.getCount());
-            out.writeObject(fries.getCost());
-
+            Fries fries = GameController.getInstance().getFries();
+            bufferedWriter.write(fries.getCount() + "\n");
+            bufferedWriter.write(fries.getCost() + "\n");
 
             // Save pizza data
-            Pizza pizza = new Pizza();
-            out.writeObject(pizza.getCount());
-            out.writeObject(pizza.getCost());
+            Pizza pizza = GameController.getInstance().getPizza();
+            bufferedWriter.write(pizza.getCount() + "\n");
+            bufferedWriter.write(pizza.getCost() + "\n");
 
 
             // Save chicken strip data
-            ChickenStrips chickenStrips = new ChickenStrips();
-            out.writeObject(chickenStrips.getCount());
-            out.writeObject(chickenStrips.getCost());
-
+            ChickenStrips chickenStrips = GameController.getInstance().getChickenStrips();
+            bufferedWriter.write(chickenStrips.getCount() + "\n");
+            bufferedWriter.write(chickenStrips.getCost() + "\n");
 
             // Save hotdog data
-            HotDog hotdog = new HotDog();
-            out.writeObject(hotdog.getCount());
-            out.writeObject(hotdog.getCost());
+            HotDog hotdog = GameController.getInstance().getHotDog();
+            bufferedWriter.write(hotdog.getCount() + "\n");
+            bufferedWriter.write(hotdog.getCost() + "\n");
 
-
-            // Save icecream data
-            Icecream icecream = new Icecream();
-            out.writeObject(icecream.getCount());
-            out.writeObject(icecream.getCost());
+            // Save ice cream data
+            Icecream icecream = GameController.getInstance().getIcecream();
+            bufferedWriter.write(icecream.getCount() + "\n");
+            bufferedWriter.write(icecream.getCost() + "\n");
 
 
             // Save poutine data
-            Poutine poutine = new Poutine();
-            out.writeObject(poutine.getCount());
-            out.writeObject(poutine.getCost());
+            Poutine poutine = GameController.getInstance().getPoutine();
+            bufferedWriter.write(poutine.getCount() + "\n");
+            bufferedWriter.write(poutine.getCost() + "\n");
 
-
-            out.close();
-            fileOut.close();
+            bufferedWriter.close();
             System.out.println("Game data saved to " + file.getAbsolutePath());
         } catch (IOException i) {
             i.printStackTrace();
         }
     }
+
+
+
 
 //    @FXML
 //    public void loadGame(ActionEvent event) {
