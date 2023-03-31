@@ -4,6 +4,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -11,6 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 
 import javafx.util.Duration;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class GameController {
     HotDog hotdog = new HotDog();
@@ -28,6 +34,8 @@ public class GameController {
     public Button hotdogButton;
     @FXML
     private Button initialize;
+    private static GameController instance;
+
 
     // upgradables
     public Button hotdogUpgrade;
@@ -44,7 +52,12 @@ public class GameController {
     public GameController() {
         this.clickerValue = player.getClickerValue(); // default = 1
     }
-
+    public static GameController getInstance() {
+            if (instance == null) {
+            instance = new GameController();
+            }
+            return instance;
+    }
     // method runs as soon as program runs
     public void initialize() {
         initialize.fire();
@@ -241,5 +254,76 @@ public class GameController {
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+    }
+    @FXML
+    public void saveGame(ActionEvent event) {
+        try {
+            File file = new File("game_data.ser");
+            FileOutputStream fileOut = new FileOutputStream(file);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            // Save player data
+            Player player = new Player();
+            out.writeObject(player.totalRevenue());
+            out.writeObject(player.getClickerValue());
+
+            // Save fries data
+            Fries fries = new Fries();
+            out.writeObject(fries.getCount());
+
+            // Save pizza data
+            Pizza pizza = new Pizza();
+            out.writeObject(pizza.getCount());
+
+            // Save chicken strip data
+            ChickenStrips chickenStrips = new ChickenStrips();
+            out.writeObject(chickenStrips.getCount());
+
+            // Save hotdog data
+            HotDog hotdog = new HotDog();
+            out.writeObject(hotdog.getCount());
+
+            // Save icecream data
+            Icecream icecream = new Icecream();
+            out.writeObject(icecream.getCount());
+
+            // Save poutine data
+            Poutine poutine = new Poutine();
+            out.writeObject(poutine.getCount());
+
+            out.close();
+            fileOut.close();
+            System.out.println("Game data saved to " + file.getAbsolutePath());
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public void setHotDog(HotDog hotdog) {
+        this.hotdog = hotdog;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setFries(Fries fries) {
+        this.fries = fries;
+    }
+
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
+    }
+
+    public void setPoutine(Poutine poutine) {
+        this.poutine = poutine;
+    }
+
+    public void setChickenStrips(ChickenStrips chicken) {
+        this.chicken = chicken;
+    }
+
+    public void setIcecream(Icecream icecream) {
+        this.icecream = icecream;
     }
 }
