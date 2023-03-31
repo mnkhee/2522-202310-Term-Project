@@ -1,6 +1,8 @@
 package ca.bcit.comp2522.termproject.comp2522202310termproject360;
 
-public class Fries implements Item {
+import java.io.Serializable;
+
+public class Fries implements Item, Serializable {
     private double cost;
     private double passiveValue;
     private int count;
@@ -33,6 +35,8 @@ public class Fries implements Item {
     public int getCount() {
         return this.count;
     }
+    @Override
+    public void setCount(int count) {this.count = count;}
 
     @Override
     public void incrementCount() {

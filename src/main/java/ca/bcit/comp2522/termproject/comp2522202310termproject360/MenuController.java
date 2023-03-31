@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
@@ -59,11 +59,107 @@ public class MenuController implements Initializable {
     }
     @FXML
     public void saveGame(ActionEvent event) {
-        // save game data to a file
+        try {
+            FileOutputStream fileOut = new FileOutputStream("game_data.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            // Save player data
+            Player player = new Player();
+            out.writeObject(player.totalRevenue());
+            out.writeObject(player.getClickerValue());
+
+            // Save fries data
+            Fries fries = new Fries();
+            out.writeObject(fries.getCount());
+
+            // Save pizza data
+            Pizza pizza = new Pizza();
+            out.writeObject(pizza.getCount());
+
+            // Save chicken strip data
+            ChickenStrips chickenStrips = new ChickenStrips();
+            out.writeObject(chickenStrips.getCount());
+
+            // Save hotdog data
+            HotDog hotdog = new HotDog();
+            out.writeObject(hotdog.getCount());
+
+            // Save icecream data
+            Icecream icecream = new Icecream();
+            out.writeObject(icecream.getCount());
+
+            // Save poutine data
+            Poutine poutine = new Poutine();
+            out.writeObject(poutine.getCount());
+
+            out.close();
+            fileOut.close();
+            System.out.println("Game data saved.");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
     }
+
     @FXML
     public void loadGame(ActionEvent event) {
-        // load game data from a file and resume the game
+        try {
+            FileInputStream fileIn = new FileInputStream("game_data.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+
+            // Load player data
+            Player player = new Player();
+            player.receiveRevenue((Double) in.readObject());
+            player.setClickerValue((Integer) in.readObject());
+
+            // Load fries data
+            Fries fries = new Fries();
+            fries.setCost((Double) in.readObject());
+            fries.setPassiveValue((Double) in.readObject());
+            fries.incrementCount();
+
+            // Load pizza data
+            Pizza pizza = new Pizza();
+            pizza.setCost((Double) in.readObject());
+            pizza.setPassiveValue((Double) in.readObject());
+            pizza.incrementCount();
+
+            // Load chicken strip data
+            ChickenStrips chickenStrips = new ChickenStrips();
+            chickenStrips.setCost((Double) in.readObject());
+            chickenStrips.setPassiveValue((Double) in.readObject());
+            chickenStrips.incrementCount();
+
+            // Load hotDog data
+            HotDog hotdog = new HotDog();
+            hotdog.setCost((Double) in.readObject());
+            hotdog.setPassiveValue((Double) in.readObject());
+            hotdog.incrementCount();
+
+            // Load icecream data
+            Icecream icecream = new Icecream();
+            icecream.setCost((Double) in.readObject());
+            icecream.setPassiveValue((Double) in.readObject());
+            icecream.incrementCount();
+
+            // Load poutine data
+            Poutine poutine = new Poutine();
+            poutine.setCost((Double) in.readObject());
+            poutine.setPassiveValue((Double) in.readObject());
+            poutine.incrementCount();
+
+
+            in.close();
+            fileIn.close();
+            System.out.println("Game data loaded.");
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            System.out.println("Game data class not found.");
+            c.printStackTrace();
+        }
     }
+
+
+
 }
 

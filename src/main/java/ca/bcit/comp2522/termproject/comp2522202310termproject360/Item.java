@@ -11,6 +11,7 @@ public interface Item {
     void setCost(double cost);
 
     int getCount();
+    void setCount(int count);
 
     void incrementCount();
 

@@ -34,6 +34,8 @@ public class Pizza implements Item {
     public int getCount() {
         return this.count;
     }
+    @Override
+    public void setCount(int count) {this.count = count;}
 
     @Override
     public void incrementCount() {
