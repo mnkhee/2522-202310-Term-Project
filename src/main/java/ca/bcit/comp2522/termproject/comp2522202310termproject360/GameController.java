@@ -16,6 +16,7 @@ public class GameController {
     HotDog hotdog = new HotDog();
     Player player = new Player();
     Fries fries = new Fries();
+    Pizza pizza = new Pizza();
     Timeline timeline;
     @FXML
     private Label totalRevenue;
@@ -31,6 +32,7 @@ public class GameController {
     public Button poutineUpgrade;
     public Button pizzaUpgrade;
     public Button icecreamUpgrade;
+    public Button chickenUpgrade;
     @FXML
     public double clickerValue;
 
@@ -51,6 +53,10 @@ public class GameController {
         initialize.setVisible(false);
         hotdogUpgrade.setVisible(false);
         friesUpgrade.setVisible(false);
+        pizzaUpgrade.setVisible(false);
+        poutineUpgrade.setVisible(false);
+        chickenUpgrade.setVisible(false);
+        icecreamUpgrade.setVisible(false);
         tooltips();
     }
 
@@ -66,20 +72,24 @@ public class GameController {
     @FXML
     protected void incrementCounter() {
         player.receiveRevenue(clickerValue);
-        totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
+        totalRevenue.setText("$"+player.totalRevenue());
         checkForUpgradability();
     }
 
     // checks if user has enough revenue to buy an upgrade
     @FXML
     protected void checkForUpgradability() {
-        if (player.totalRevenue() >= 50) {
+        if (player.totalRevenue() >= 5) {
             hotdogUpgrade.setVisible(true);
             hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")\nPrice: $" + hotdog.getCost());
         }
-        if (player.totalRevenue() >= 1000) {
+        if (player.totalRevenue() >= 50) {
             friesUpgrade.setVisible(true);
             friesUpgrade.setText("Fries (" + fries.getCount() + ")\nPrice: $" + fries.getCost());
+        }
+        if (player.totalRevenue() >= 1000) {
+            pizzaUpgrade.setVisible(true);
+            pizzaUpgrade.setText("Pizza (" + pizza.getCount() + ")\nPrice: $" + pizza.getCost());
         }
     }
 
@@ -95,6 +105,7 @@ public class GameController {
             hotdog.setCost(hotdog.getCost() + 5);
             hotdog.incrementCount();
             hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")\nPrice: $" + hotdog.getCost());
+            totalRevenue.setText("$" + player.totalRevenue());
             incrementRevenue();
         }
     }
@@ -110,8 +121,40 @@ public class GameController {
             fries.setCost(fries.getCost() + 250);
             fries.incrementCount();
             friesUpgrade.setText("Fries (" + fries.getCount() + ")\nPrice: $" + fries.getCost());
+            totalRevenue.setText("$" + player.totalRevenue());
             incrementRevenue();
         }
+    }
+
+    @FXML
+    protected void confirmPizzaAmount() {
+        if (player.totalRevenue() < pizza.getCost()) {
+            purchaseText.setText("Not enough money to buy pizza");
+        } else {
+            pizza.setPassiveValue(12.00);
+            purchaseText.setText("Purchased Pizza");
+            player.decrementRevenue(pizza.getCost());
+            pizza.setCost(pizza.getCost() + 500);
+            pizza.incrementCount();
+            pizzaUpgrade.setText("Pizza (" + pizza.getCount() + ")\nPrice: $" + pizza.getCost());
+            totalRevenue.setText("$" + player.totalRevenue());
+            incrementRevenue();
+        }
+    }
+
+    @FXML
+    protected void confirmPoutineAmount() {
+
+    }
+
+    @FXML
+    protected void confirmChickenAmount() {
+
+    }
+
+    @FXML
+    protected void confirmIcecreamAmount() {
+
     }
 
     // increments total revenue automatically
@@ -121,8 +164,9 @@ public class GameController {
         timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> {
             player.receiveRevenue(hotdog.getPassiveIncome());
             player.receiveRevenue(fries.getPassiveIncome());
+            player.receiveRevenue(pizza.getPassiveIncome());
             System.out.println(player.totalRevenue());
-            totalRevenue.setText("Total Revenue: $" + player.totalRevenue());
+            totalRevenue.setText("$" + player.totalRevenue());
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
