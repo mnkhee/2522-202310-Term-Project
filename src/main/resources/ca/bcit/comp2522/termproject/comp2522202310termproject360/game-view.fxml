@@ -24,7 +24,7 @@
       </graphic>
     </Button>
     <Button fx:id="hotdogUpgrade" layoutX="356.0" layoutY="90.0" mnemonicParsing="false" onAction="#confirmHotdogAmount" prefHeight="74.0" prefWidth="266.0" stylesheets="@../../../../../css/stylesheet.css" text="Hot dog" />
-    <Label fx:id="purchaseText" layoutX="52.0" layoutY="535.0" prefHeight="17.0" prefWidth="285.0" textAlignment="CENTER" />
+    <Label fx:id="purchaseText" layoutX="79.0" layoutY="540.0" prefHeight="17.0" prefWidth="235.0" textAlignment="CENTER" />
     <Text fill="#f20202" layoutX="36.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costco Clicker" wrappingWidth="302.4881134033203">
         <font>
             <Font name="Comic Sans MS" size="42.0" />

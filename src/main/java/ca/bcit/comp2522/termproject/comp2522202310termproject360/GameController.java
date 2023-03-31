@@ -17,6 +17,9 @@ public class GameController {
     Player player = new Player();
     Fries fries = new Fries();
     Pizza pizza = new Pizza();
+    Poutine poutine = new Poutine();
+    ChickenStrips chicken = new ChickenStrips();
+    Icecream icecream = new Icecream();
     Timeline timeline;
     @FXML
     private Label totalRevenue;
@@ -64,8 +67,16 @@ public class GameController {
     public void tooltips() {
         double hotdogIncome = (hotdog.getPassiveIncome() * hotdog.getCount());
         double friesIncome = (fries.getPassiveIncome() * fries.getCount());
+        double pizzaIncome = (pizza.getPassiveIncome() * pizza.getCount());
+        double poutineIncome = (poutine.getPassiveIncome() * poutine.getCount());
+        double chickenIncome = (chicken.getPassiveIncome() * chicken.getCount());
+        double icecreamIncome = (icecream.getPassiveIncome() * icecream.getCount());
         hotdogUpgrade.setTooltip(new Tooltip("Hotdogs are producing $" + hotdogIncome + " per second"));
         friesUpgrade.setTooltip(new Tooltip("Fries are producing $" + friesIncome + " per second"));
+        pizzaUpgrade.setTooltip(new Tooltip("Pizza is producing $" + pizzaIncome + " per second"));
+        poutineUpgrade.setTooltip(new Tooltip("Poutine is producing $" + poutineIncome + " per second"));
+        chickenUpgrade.setTooltip(new Tooltip("Chicken Strips are producing $" + chickenIncome + " per second"));
+        icecreamUpgrade.setTooltip(new Tooltip("Ice cream is producing $" + icecreamIncome + " per second"));
     }
 
     // increments total revenue by clicker value
@@ -90,6 +101,18 @@ public class GameController {
         if (player.totalRevenue() >= 1000) {
             pizzaUpgrade.setVisible(true);
             pizzaUpgrade.setText("Pizza (" + pizza.getCount() + ")\nPrice: $" + pizza.getCost());
+        }
+        if (player.totalRevenue() >= 10000) {
+            poutineUpgrade.setVisible(true);
+            poutineUpgrade.setText("Poutine (" + poutine.getCount() + ")\nPrice: $" + poutine.getCost());
+        }
+        if (player.totalRevenue() >= 100000) {
+            chickenUpgrade.setVisible(true);
+            chickenUpgrade.setText("Chicken Strips (" + chicken.getCount() + ")\nPrice: $" + chicken.getCost());
+        }
+        if (player.totalRevenue() >= 250000) {
+            icecreamUpgrade.setVisible(true);
+            icecreamUpgrade.setText("Ice cream (" + icecream.getCount() + ")\nPrice: $" + icecream.getCost());
         }
     }
 
@@ -118,7 +141,7 @@ public class GameController {
             fries.setPassiveValue(5.00);
             purchaseText.setText("Purchased Fries");
             player.decrementRevenue(fries.getCost());
-            fries.setCost(fries.getCost() + 250);
+            fries.setCost(fries.getCost() + 25);
             fries.incrementCount();
             friesUpgrade.setText("Fries (" + fries.getCount() + ")\nPrice: $" + fries.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
@@ -131,10 +154,10 @@ public class GameController {
         if (player.totalRevenue() < pizza.getCost()) {
             purchaseText.setText("Not enough money to buy pizza");
         } else {
-            pizza.setPassiveValue(12.00);
+            pizza.setPassiveValue(18.00);
             purchaseText.setText("Purchased Pizza");
             player.decrementRevenue(pizza.getCost());
-            pizza.setCost(pizza.getCost() + 500);
+            pizza.setCost(pizza.getCost() + 250);
             pizza.incrementCount();
             pizzaUpgrade.setText("Pizza (" + pizza.getCount() + ")\nPrice: $" + pizza.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
@@ -144,17 +167,61 @@ public class GameController {
 
     @FXML
     protected void confirmPoutineAmount() {
-
+        if (player.totalRevenue() < poutine.getCost()) {
+            purchaseText.setText("Not enough money to buy poutine");
+        } else {
+            poutine.setPassiveValue(36.00);
+            purchaseText.setText("Purchased Poutine");
+            player.decrementRevenue(poutine.getCost());
+            poutine.setCost(poutine.getCost() + 1300);
+            poutine.incrementCount();
+            poutineUpgrade.setText("Poutine (" + poutine.getCount() + ")\nPrice: $" + poutine.getCost());
+            totalRevenue.setText("$" + player.totalRevenue());
+            incrementRevenue();
+        }
     }
 
     @FXML
     protected void confirmChickenAmount() {
-
+        if (player.totalRevenue() < chicken.getCost()) {
+            purchaseText.setText("Not enough money to buy chicken strips");
+        } else {
+            chicken.setPassiveValue(99.00);
+            purchaseText.setText("Purchased Chicken Strips");
+            player.decrementRevenue(chicken.getCost());
+            chicken.setCost(chicken.getCost() + 2600);
+            chicken.incrementCount();
+            chickenUpgrade.setText("Chicken Strips (" + chicken.getCount() + ")\nPrice: $" + chicken.getCost());
+            totalRevenue.setText("$" + player.totalRevenue());
+            incrementRevenue();
+        }
     }
 
     @FXML
     protected void confirmIcecreamAmount() {
+        if (player.totalRevenue() < icecream.getCost()) {
+            purchaseText.setText("Not enough money to buy ice cream");
+        } else {
+            icecream.setPassiveValue(173.00);
+            purchaseText.setText("Purchased Ice Cream");
+            player.decrementRevenue(icecream.getCost());
+            icecream.setCost(icecream.getCost() + 4500);
+            icecream.incrementCount();
+            icecreamUpgrade.setText("Ice Cream (" + icecream.getCount() + ")\nPrice: $" + icecream.getCost());
+            totalRevenue.setText("$" + player.totalRevenue());
+            incrementRevenue();
+        }
+    }
 
+    public double passiveIncome() {
+        double hotdogIncome = (hotdog.getPassiveIncome() * hotdog.getCount());
+        double friesIncome = (fries.getPassiveIncome() * fries.getCount());
+        double pizzaIncome = (pizza.getPassiveIncome() * pizza.getCount());
+        double poutineIncome = (poutine.getPassiveIncome() * poutine.getCount());
+        double chickenIncome = (chicken.getPassiveIncome() * chicken.getCount());
+        double icecreamIncome = (icecream.getPassiveIncome() * icecream.getCount());
+        return hotdogIncome + friesIncome + pizzaIncome + poutineIncome
+                + chickenIncome + icecreamIncome;
     }
 
     // increments total revenue automatically
@@ -162,9 +229,13 @@ public class GameController {
     protected void incrementRevenue() {
         tooltips();
         timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> {
+            checkForUpgradability();
             player.receiveRevenue(hotdog.getPassiveIncome());
             player.receiveRevenue(fries.getPassiveIncome());
             player.receiveRevenue(pizza.getPassiveIncome());
+            player.receiveRevenue(poutine.getPassiveIncome());
+            player.receiveRevenue(chicken.getPassiveIncome());
+            player.receiveRevenue(icecream.getPassiveIncome());
             System.out.println(player.totalRevenue());
             totalRevenue.setText("$" + player.totalRevenue());
         }));
