@@ -4,8 +4,8 @@ public class Player {
     private double playerRevenue;
     private int playerClicker;
 
-    public Player() {
-        this.playerRevenue = 0;
+    public Player(double playerRevenue, int playerClicker) {
+        this.playerRevenue = playerRevenue;
         this.playerClicker = 1;
     }
 

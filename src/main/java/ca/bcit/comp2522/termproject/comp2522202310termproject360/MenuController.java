@@ -233,7 +233,7 @@ public class MenuController implements Initializable {
             fileIn.close();
 
             // Initialize the game with the loaded data
-            Player player = new Player();
+            Player player = new Player(0, 1);
             player.receiveRevenue(revenue);
             player.setClickerValue(clickerValue);
 

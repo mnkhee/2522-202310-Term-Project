@@ -17,7 +17,7 @@ import java.io.*;
 
 public class GameController {
     HotDog hotdog = new HotDog();
-    Player player = new Player();
+    Player player = new Player(0,1);
     Fries fries = new Fries();
     Pizza pizza = new Pizza();
     Poutine poutine = new Poutine();
@@ -302,7 +302,7 @@ public class GameController {
     }
 }
     public void reset() {
-        totalRevenue.setText("$0");
+        totalRevenue.setText("$" +player.totalRevenue());
     }
     @FXML
     public void loadGame(ActionEvent event) {
@@ -316,6 +316,7 @@ public class GameController {
             double playerRevenue = Double.parseDouble(playerRevenueString);
             String clickerValueString = bufferedReader.readLine();
             int clickerValue = Integer.parseInt(clickerValueString);
+            player = new Player(playerRevenue, clickerValue);
 
             // Load hotdog data
             String hotdogCountString = bufferedReader.readLine();
@@ -357,8 +358,6 @@ public class GameController {
             fileReader.close();
             System.out.println("Game data loaded from " + file.getAbsolutePath());
             reset();
-            player.receiveRevenue(playerRevenue);
-            player.setClickerValue(clickerValue);
 
             hotdog.setCount(hotdogCount);
             hotdog.setCost(hotdogCost);
