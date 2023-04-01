@@ -253,50 +253,7 @@ public class GameController {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
-//    @FXML
-//    public void saveGame(ActionEvent event) {
-//        try {
-//            File file = new File("game_data.ser");
-//            FileOutputStream fileOut = new FileOutputStream(file);
-//            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-//
-//            // Save player data
-//            Player player = new Player();
-//            out.writeObject(player.totalRevenue());
-//            out.writeObject(player.getClickerValue());
-//
-//            // Save fries data
-//            Fries fries = new Fries();
-//            out.writeObject(fries.getCount());
-//
-//            // Save pizza data
-//            Pizza pizza = new Pizza();
-//            out.writeObject(pizza.getCount());
-//
-//            // Save chicken strip data
-//            ChickenStrips chickenStrips = new ChickenStrips();
-//            out.writeObject(chickenStrips.getCount());
-//
-//            // Save hotdog data
-//            HotDog hotdog = new HotDog();
-//            out.writeObject(hotdog.getCount());
-//
-//            // Save icecream data
-//            Icecream icecream = new Icecream();
-//            out.writeObject(icecream.getCount());
-//
-//            // Save poutine data
-//            Poutine poutine = new Poutine();
-//            out.writeObject(poutine.getCount());
-//
-//            out.close();
-//            fileOut.close();
-//            System.out.println("Game data saved to " + file.getAbsolutePath());
-//        } catch (IOException i) {
-//            i.printStackTrace();
-//        }
-//
-//    }
+
     @FXML
     public void saveGame(ActionEvent event) {
     try {
@@ -344,6 +301,87 @@ public class GameController {
         e.printStackTrace();
     }
 }
+    public void reset() {
+        totalRevenue.setText("$0");
+    }
+    @FXML
+    public void loadGame(ActionEvent event) {
+        try {
+            File file = new File("game_data.txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            // Load player data
+            String playerRevenueString = bufferedReader.readLine();
+            double playerRevenue = Double.parseDouble(playerRevenueString);
+            String clickerValueString = bufferedReader.readLine();
+            int clickerValue = Integer.parseInt(clickerValueString);
+
+            // Load hotdog data
+            String hotdogCountString = bufferedReader.readLine();
+            int hotdogCount = Integer.parseInt(hotdogCountString);
+            String hotdogCostString = bufferedReader.readLine();
+            double hotdogCost = Double.parseDouble(hotdogCostString);
+
+            // Load fries data
+            String friesCountString = bufferedReader.readLine();
+            int friesCount = Integer.parseInt(friesCountString);
+            String friesCostString = bufferedReader.readLine();
+            double friesCost = Double.parseDouble(friesCostString);
+
+            // Load pizza data
+            String pizzaCountString = bufferedReader.readLine();
+            int pizzaCount = Integer.parseInt(pizzaCountString);
+            String pizzaCostString = bufferedReader.readLine();
+            double pizzaCost = Double.parseDouble(pizzaCostString);
+
+            // Load poutine data
+            String poutineCountString = bufferedReader.readLine();
+            int poutineCount = Integer.parseInt(poutineCountString);
+            String poutineCostString = bufferedReader.readLine();
+            double poutineCost = Double.parseDouble(poutineCostString);
+
+            // Load chicken strips data
+            String chickenCountString = bufferedReader.readLine();
+            int chickenCount = Integer.parseInt(chickenCountString);
+            String chickenCostString = bufferedReader.readLine();
+            double chickenCost = Double.parseDouble(chickenCostString);
+
+            // Load ice cream data
+            String icecreamCountString = bufferedReader.readLine();
+            int icecreamCount = Integer.parseInt(icecreamCountString);
+            String icecreamCostString = bufferedReader.readLine();
+            double icecreamCost = Double.parseDouble(icecreamCostString);
+
+            bufferedReader.close();
+            fileReader.close();
+            System.out.println("Game data loaded from " + file.getAbsolutePath());
+            reset();
+            player.receiveRevenue(playerRevenue);
+            player.setClickerValue(clickerValue);
+
+            hotdog.setCount(hotdogCount);
+            hotdog.setCost(hotdogCost);
+
+            fries.setCount(friesCount);
+            fries.setCost(friesCost);
+
+            pizza.setCount(pizzaCount);
+            pizza.setCost(pizzaCost);
+
+            poutine.setCount(poutineCount);
+            poutine.setCost(poutineCost);
+
+            chicken.setCount(chickenCount);
+            chicken.setCost(chickenCost);
+
+            icecream.setCount(icecreamCount);
+            icecream.setCost(icecreamCost);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void setHotDog(HotDog hotdog) {

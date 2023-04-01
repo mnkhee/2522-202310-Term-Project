@@ -51,7 +51,9 @@
    <Button fx:id="poutineUpgrade" layoutX="357.0" layoutY="321.0" mnemonicParsing="false" onAction="#confirmPoutineAmount" prefHeight="74.0" prefWidth="265.0" stylesheets="@../../../../../css/stylesheet.css" text="Poutine" />
    <Button fx:id="chickenUpgrade" layoutX="357.0" layoutY="398.0" mnemonicParsing="false" onAction="#confirmChickenAmount" prefHeight="74.0" prefWidth="265.0" stylesheets="@../../../../../css/stylesheet.css" text="Chicken" />
    <Button fx:id="icecreamUpgrade" layoutX="357.0" layoutY="475.0" mnemonicParsing="false" onAction="#confirmIcecreamAmount" prefHeight="74.0" prefWidth="265.0" stylesheets="@../../../../../css/stylesheet.css" text="Ice Cream" />
-    <Button onAction="#saveGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Save" textFill="#721e96" />
+    <Button layoutX="14.0" layoutY="507.0" onAction="#saveGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Save" textFill="#721e96" />
+    <Button layoutX="197.0" layoutY="507.0" onAction="#loadGame" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Comic Sans MS'; -fx-min-width: 150;" text="Load" textFill="#721e96" />
+
     <Separator layoutX="481.0" layoutY="-54.0" orientation="VERTICAL" prefHeight="265.0" prefWidth="19.0" rotate="90.0" />
    <Separator layoutX="351.0" layoutY="-8.0" orientation="VERTICAL" prefHeight="723.0" prefWidth="15.0" />
 </AnchorPane>
