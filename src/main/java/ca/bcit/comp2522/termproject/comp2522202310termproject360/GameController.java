@@ -80,12 +80,12 @@ public class GameController {
 
     // method for tooltips (hovering over buttons will display a message. not sure what to do with this tbh)
     public void tooltips() {
-        double hotdogIncome = (hotdog.getPassiveIncome() * hotdog.getCount());
-        double friesIncome = (fries.getPassiveIncome() * fries.getCount());
-        double pizzaIncome = (pizza.getPassiveIncome() * pizza.getCount());
-        double poutineIncome = (poutine.getPassiveIncome() * poutine.getCount());
-        double chickenIncome = (chicken.getPassiveIncome() * chicken.getCount());
-        double icecreamIncome = (icecream.getPassiveIncome() * icecream.getCount());
+        double hotdogIncome = hotdog.getPassiveIncome();
+        double friesIncome = fries.getPassiveIncome();
+        double pizzaIncome = pizza.getPassiveIncome();
+        double poutineIncome = poutine.getPassiveIncome();
+        double chickenIncome = chicken.getPassiveIncome();
+        double icecreamIncome = icecream.getPassiveIncome();
         hotdogUpgrade.setTooltip(new Tooltip("Hotdogs are producing $" + hotdogIncome + " per second"));
         friesUpgrade.setTooltip(new Tooltip("Fries are producing $" + friesIncome + " per second"));
         pizzaUpgrade.setTooltip(new Tooltip("Pizza is producing $" + pizzaIncome + " per second"));
