@@ -304,47 +304,39 @@ public class GameController {
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        // Save fries data
-        Fries fries = GameController.getInstance().getFries();
-        bufferedWriter.write(fries.getCount() + "\n");
-        bufferedWriter.write(fries.getCost() + "\n");
-
-        // Save hotdog data
-        HotDog hotDog = GameController.getInstance().getHotDog();
-        bufferedWriter.write(hotdog.getCount() + "\n");
-        System.out.println("Writing to file: " + hotdog.getCount());
-        bufferedWriter.write(hotdog.getCost() + "\n");
-        System.out.println("Hotdog count set to: " + hotdog.getCount());
-
-
-        // Save chicken strips data
-        ChickenStrips chickenStrips = GameController.getInstance().getChickenStrips();
-        bufferedWriter.write(chickenStrips.getCount() + "\n");
-        bufferedWriter.write(chickenStrips.getCost() + "\n");
-
-        // Save poutine data
-        Poutine poutine = GameController.getInstance().getPoutine();
-        bufferedWriter.write(poutine.getCount() + "\n");
-        bufferedWriter.write(poutine.getCost() + "\n");
-
         // Save player data
-        Player player = GameController.getInstance().getPlayer();
         bufferedWriter.write(player.totalRevenue() + "\n");
         System.out.println("Writing to file: " + player.totalRevenue());
         bufferedWriter.write(player.getClickerValue() + "\n");
         System.out.println("Player revenue set to: " + player.totalRevenue());
 
+        // Save hotdog data
+        bufferedWriter.write(hotdog.getCount() + "\n");
+        System.out.println("Writing to file: " + hotdog.getCount());
+        bufferedWriter.write(hotdog.getCost() + "\n");
+        System.out.println("Hotdog count set to: " + hotdog.getCount());
+
+        // Save fries data
+        bufferedWriter.write(fries.getCount() + "\n");
+        bufferedWriter.write(fries.getCost() + "\n");
 
         // Save pizza data
-        Pizza pizza = GameController.getInstance().getPizza();
         bufferedWriter.write(pizza.getCount() + "\n");
         bufferedWriter.write(pizza.getCost() + "\n");
 
-        // Save ice cream data
-        Icecream iceCream = GameController.getInstance().getIcecream();
-        bufferedWriter.write(iceCream.getCount() + "\n");
-        bufferedWriter.write(iceCream.getCost() + "\n");
+        // Save poutine data
+        bufferedWriter.write(poutine.getCount() + "\n");
+        bufferedWriter.write(poutine.getCost() + "\n");
 
+        // Save chicken strips data
+        bufferedWriter.write(chicken.getCount() + "\n");
+        bufferedWriter.write(chicken.getCost() + "\n");
+
+        // Save ice cream data
+        bufferedWriter.write(icecream.getCount() + "\n");
+        bufferedWriter.write(icecream.getCost() + "\n");
+
+        bufferedWriter.flush();
         bufferedWriter.close();
         fileWriter.close();
         System.out.println("Game data saved to " + file.getAbsolutePath());
