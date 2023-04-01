@@ -16,6 +16,11 @@ public class Pizza implements Item {
     }
 
     @Override
+    public void incrementPassiveValue(double passiveValue) {
+        this.passiveValue += passiveValue;
+    }
+
+    @Override
     public void setPassiveValue(double passiveValue) {
         this.passiveValue = passiveValue;
     }

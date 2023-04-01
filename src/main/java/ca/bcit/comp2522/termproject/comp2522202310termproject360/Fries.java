@@ -17,6 +17,11 @@ public class Fries implements Item, Serializable {
     }
 
     @Override
+    public void incrementPassiveValue(double passiveValue) {
+        this.passiveValue += passiveValue;
+    }
+
+    @Override
     public void setPassiveValue(double passiveValue) {
         this.passiveValue = passiveValue;
     }

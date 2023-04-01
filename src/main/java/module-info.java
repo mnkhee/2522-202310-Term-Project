@@ -10,7 +10,7 @@ module ca.bcit.comp2522.termproject.comp2522202310termproject360 {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
-    requires com.google.gson;
+    //requires com.google.gson;
 
     opens ca.bcit.comp2522.termproject.comp2522202310termproject360 to javafx.fxml;
     exports ca.bcit.comp2522.termproject.comp2522202310termproject360;
