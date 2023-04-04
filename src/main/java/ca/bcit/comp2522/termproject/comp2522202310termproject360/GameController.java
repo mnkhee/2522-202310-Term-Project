@@ -11,6 +11,13 @@ import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
 import java.io.*;
 
+/**
+ * GameController.
+ *
+ * @author Joshua Chuah
+ * @author Justin Oh
+ * @version 2023
+ */
 public class GameController {
     HotDog hotdog = new HotDog();
     Player player = new Player(0,1);
@@ -44,8 +51,9 @@ public class GameController {
     public double clickerValue;
     int test = 0;
 
-
-
+    /**
+     * Constructor for GameController.
+     */
     public GameController() {
         this.clickerValue = player.getClickerValue(); // default = 1
     }
@@ -55,12 +63,18 @@ public class GameController {
             }
             return instance;
     }
-    // method runs as soon as program runs
+
+    /**
+     * Method initializes as soon as program starts, which runs the
+     * hideButtons() method, incrementRevenue() method and tooltips() method.
+     */
     public void initialize() {
         initialize.fire();
     }
 
-    // hides upgrade buttons
+    /**
+     * Hides upgrade buttons until the user has enough revenue to view it.
+     */
     @FXML
     public void hideButtons() {
         incrementRevenue();
@@ -74,7 +88,10 @@ public class GameController {
         tooltips();
     }
 
-    // method for tooltips (hovering over buttons will display a message. not sure what to do with this tbh)
+    /**
+     * Shows how much revenue each upgrade is earning when the user hovers their mouse over the
+     * corresponding button.
+     */
     public void tooltips() {
         double hotdogIncome = hotdog.getPassiveIncome();
         double friesIncome = fries.getPassiveIncome();
@@ -90,15 +107,19 @@ public class GameController {
         icecreamUpgrade.setTooltip(new Tooltip("Ice cream is producing $" + icecreamIncome + " per second"));
     }
 
-    // increments total revenue by clicker value
+    /**
+     * Increments totalRevenue by the clickerValue everytime the user clicks on the hot dog.
+     */
     @FXML
     protected void incrementCounter() {
-        player.receiveRevenue(clickerValue);
+        player.receiveRevenue(player.getClickerValue());
         totalRevenue.setText("$"+player.totalRevenue());
         checkForUpgradability();
     }
 
-    // checks if user has enough revenue to buy an upgrade
+    /**
+     * Checks if the user has enough revenue to view the next upgrade available.
+     */
     @FXML
     protected void checkForUpgradability() {
         if (player.totalRevenue() >= 5) {
@@ -127,7 +148,17 @@ public class GameController {
         }
     }
 
-    // confirms purchase
+    /**
+     * Confirms if the user has enough revenue to buy a hot dog upgrade.
+     * <p>
+     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     *     increments passive revenue gain by 1.25 and removes the value of hotdog.getCost() from
+     *     totalRevenue. It then makes the price of hot dog $5 more and increments the hot dog count
+     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     *     revenue is gained with each click). If the user does not have enough revenue to buy a
+     *     hot dog upgrade, then the method does not allow the user to buy the hot dog.
+     * </p>
+     */
     @FXML
     protected void confirmHotdogAmount() {
         if (player.totalRevenue() < hotdog.getCost()) { // checks if player has enough revenue to purchase a hotdog
@@ -142,10 +173,21 @@ public class GameController {
             hotdogUpgrade.setText("Hot dog (" + hotdog.getCount() + ")\nPrice: $" + hotdog.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
-            //incrementRevenue();
+            player.setClickerValue(0.5);
         }
     }
 
+    /**
+     * Confirms if the user has enough revenue to buy the fries upgrade.
+     * <p>
+     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     *     increments passive revenue gain by 5.00 and removes the value of fries.getCost() from
+     *     totalRevenue. It then makes the price of fries $25 more and increments the fries count
+     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     *     revenue is gained with each click). If the user does not have enough revenue to buy the
+     *     fries upgrade, then the method does not allow the user to buy fries.
+     * </p>
+     */
     @FXML
     protected void confirmFriesAmount() {
         if (player.totalRevenue() < fries.getCost()) {
@@ -159,10 +201,21 @@ public class GameController {
             friesUpgrade.setText("Fries (" + fries.getCount() + ")\nPrice: $" + fries.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
-            //incrementRevenue();
+            player.setClickerValue(0.5);
         }
     }
 
+    /**
+     * Confirms if the user has enough revenue to buy the pizza upgrade.
+     * <p>
+     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     *     increments passive revenue gain by 18.00 and removes the value of pizza.getCost() from
+     *     totalRevenue. It then makes the price of pizza $250 more and increments the pizza count
+     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     *     revenue is gained with each click). If the user does not have enough revenue to buy a
+     *     pizza upgrade, then the method does not allow the user to buy the upgrade.
+     * </p>
+     */
     @FXML
     protected void confirmPizzaAmount() {
         if (player.totalRevenue() < pizza.getCost()) {
@@ -176,10 +229,21 @@ public class GameController {
             pizzaUpgrade.setText("Pizza (" + pizza.getCount() + ")\nPrice: $" + pizza.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
-            //incrementRevenue();
+            player.setClickerValue(0.5);
         }
     }
 
+    /**
+     * Confirms if the user has enough revenue to buy the poutine upgrade.
+     * <p>
+     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     *     increments passive revenue gain by 36.00 and removes the value of poutine.getCost() from
+     *     totalRevenue. It then makes the price of poutine $1300 more and increments the poutine count
+     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     *     revenue is gained with each click). If the user does not have enough revenue to buy a
+     *     poutine upgrade, then the method does not allow the user to buy the upgrade.
+     * </p>
+     */
     @FXML
     protected void confirmPoutineAmount() {
         if (player.totalRevenue() < poutine.getCost()) {
@@ -193,10 +257,21 @@ public class GameController {
             poutineUpgrade.setText("Poutine (" + poutine.getCount() + ")\nPrice: $" + poutine.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
-            //incrementRevenue();
+            player.setClickerValue(0.5);
         }
     }
 
+    /**
+     * Confirms if the user has enough revenue to buy the Chicken Strips upgrade.
+     * <p>
+     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     *     increments passive revenue gain by 99.00 and removes the value of chicken.getCost() from
+     *     totalRevenue. It then makes the price of chicken strips $2600 more and increments the chicken count
+     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     *     revenue is gained with each click). If the user does not have enough revenue to buy the
+     *     chicken strips upgrade, then the method does not allow the user to buy the upgrade.
+     * </p>
+     */
     @FXML
     protected void confirmChickenAmount() {
         if (player.totalRevenue() < chicken.getCost()) {
@@ -210,10 +285,21 @@ public class GameController {
             chickenUpgrade.setText("Chicken Strips (" + chicken.getCount() + ")\nPrice: $" + chicken.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
-            //incrementRevenue();
+            player.setClickerValue(0.5);
         }
     }
 
+    /**
+     * Confirms if the user has enough revenue to buy the ice cream upgrade.
+     * <p>
+     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     *     increments passive revenue gain by 173.00 and removes the value of icecream.getCost() from
+     *     totalRevenue. It then makes the price of ice cream $4500 more and increments the icecream count
+     *     by one. Finally, it increments the players click value by 1. (the click value is how much
+     *     revenue is gained with each click). If the user does not have enough revenue to buy a
+     *     ice cream upgrade, then the method does not allow the user to buy the upgrade.
+     * </p>
+     */
     @FXML
     protected void confirmIcecreamAmount() {
         if (player.totalRevenue() < icecream.getCost()) {
@@ -227,10 +313,14 @@ public class GameController {
             icecreamUpgrade.setText("Ice Cream (" + icecream.getCount() + ")\nPrice: $" + icecream.getCost());
             totalRevenue.setText("$" + player.totalRevenue());
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
-            //incrementRevenue();
+            player.setClickerValue(1);
         }
     }
 
+    /**
+     * Adds the passiveIncome from all upgrades and return's the total passive income.
+     * @return total passive income.
+     */
     public double passiveIncome() {
         double hotdogIncome = hotdog.getPassiveIncome();
         double friesIncome = fries.getPassiveIncome();
@@ -242,7 +332,10 @@ public class GameController {
                 + chickenIncome + icecreamIncome;
     }
 
-    // increments total revenue automatically
+    /**
+     * Passively increments the total revenue by passive incomes of each upgrade
+     * (if the user bought them).
+     */
     @FXML
     protected void incrementRevenue() {
         if (test == 0) {
