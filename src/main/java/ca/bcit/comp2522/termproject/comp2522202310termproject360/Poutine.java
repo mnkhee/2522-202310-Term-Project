@@ -7,6 +7,10 @@ package ca.bcit.comp2522.termproject.comp2522202310termproject360;
  * @version 2023
  */
 public class Poutine implements Item {
+    /**
+     * Initial cost of Poutine.
+     */
+    static final int INITIAL_COST = 100000;
     private double cost;
     private double passiveValue;
     private int count;
@@ -15,7 +19,7 @@ public class Poutine implements Item {
      * Constructs an object of type Poutine.
      */
     public Poutine() {
-        this.cost = 100000;
+        this.cost = INITIAL_COST;
         this.passiveValue = 0;
         this.count = 0;
     }
@@ -36,7 +40,7 @@ public class Poutine implements Item {
      * @param passiveValue amount to increment passive value by
      */
     @Override
-    public void incrementPassiveValue(double passiveValue) {
+    public void incrementPassiveValue(final double passiveValue) {
         this.passiveValue += passiveValue;
     }
 
@@ -46,7 +50,7 @@ public class Poutine implements Item {
      * @param passiveValue new passive value of Poutine
      */
     @Override
-    public void setPassiveValue(double passiveValue) {
+    public void setPassiveValue(final double passiveValue) {
         this.passiveValue = passiveValue;
     }
 
@@ -66,7 +70,7 @@ public class Poutine implements Item {
      * @param cost new cost of Poutine
      */
     @Override
-    public void setCost(double cost) {
+    public void setCost(final double cost) {
         this.cost = cost;
     }
 
@@ -86,7 +90,8 @@ public class Poutine implements Item {
      * @param count new number of Poutine owned
      */
     @Override
-    public void setCount(int count) {this.count = count;}
+    public void setCount(final int count) {
+        this.count = count; }
 
     /**
      * Increments Poutine count by one.

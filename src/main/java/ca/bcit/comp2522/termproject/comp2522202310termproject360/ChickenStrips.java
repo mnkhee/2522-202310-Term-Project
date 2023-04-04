@@ -6,6 +6,10 @@ package ca.bcit.comp2522.termproject.comp2522202310termproject360;
  * @version 2023
  */
 public class ChickenStrips implements Item {
+    /**
+     * Initial cost of ChickenStrips.
+     */
+    static final int INITIAL_COST = 250000;
     private double cost;
     private double passiveValue;
     private int count;
@@ -13,7 +17,7 @@ public class ChickenStrips implements Item {
      * Constructs an object of type ChickenStrips.
      */
     public ChickenStrips() {
-        this.cost = 250000;
+        this.cost = INITIAL_COST;
         this.passiveValue = 0;
         this.count = 0;
     }
@@ -34,7 +38,7 @@ public class ChickenStrips implements Item {
      * @param passiveValue amount to increment passive value by
      */
     @Override
-    public void incrementPassiveValue(double passiveValue) {
+    public void incrementPassiveValue(final double passiveValue) {
         this.passiveValue += passiveValue;
     }
 
@@ -44,7 +48,7 @@ public class ChickenStrips implements Item {
      * @param passiveValue new passive value of ChickenStrips
      */
     @Override
-    public void setPassiveValue(double passiveValue) {
+    public void setPassiveValue(final double passiveValue) {
         this.passiveValue = passiveValue;
     }
 
@@ -64,7 +68,7 @@ public class ChickenStrips implements Item {
      * @param cost new cost of ChickenStrips
      */
     @Override
-    public void setCost(double cost) {
+    public void setCost(final double cost) {
         this.cost = cost;
     }
 
@@ -84,7 +88,8 @@ public class ChickenStrips implements Item {
      * @param count new number of ChickenStrips owned
      */
     @Override
-    public void setCount(int count) {this.count = count;}
+    public void setCount(final int count) {
+        this.count = count; }
 
     /**
      * Increments ChickenStrips count by one.

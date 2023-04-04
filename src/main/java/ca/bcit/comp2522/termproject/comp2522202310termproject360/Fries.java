@@ -6,6 +6,10 @@ package ca.bcit.comp2522.termproject.comp2522202310termproject360;
  * @version 2023
  */
 public class Fries implements Item {
+    /**
+     * Initial cost of Fries.
+     */
+    static final int INITIAL_COST = 1000;
     private double cost;
     private double passiveValue;
     private int count;
@@ -13,7 +17,7 @@ public class Fries implements Item {
      * Constructs an object of type Fries.
      */
     public Fries() {
-        this.cost = 1000;
+        this.cost = INITIAL_COST;
         this.passiveValue = 0;
         this.count = 0;
     }
@@ -34,7 +38,7 @@ public class Fries implements Item {
      * @param passiveValue amount to increment passive value by
      */
     @Override
-    public void incrementPassiveValue(double passiveValue) {
+    public void incrementPassiveValue(final double passiveValue) {
         this.passiveValue += passiveValue;
     }
 
@@ -44,7 +48,7 @@ public class Fries implements Item {
      * @param passiveValue new passive value of Fries
      */
     @Override
-    public void setPassiveValue(double passiveValue) {
+    public void setPassiveValue(final double passiveValue) {
         this.passiveValue = passiveValue;
     }
 
@@ -64,7 +68,7 @@ public class Fries implements Item {
      * @param cost new cost of Fries
      */
     @Override
-    public void setCost(double cost) {
+    public void setCost(final double cost) {
         this.cost = cost;
     }
 
@@ -84,7 +88,8 @@ public class Fries implements Item {
      * @param count new number of Fries owned
      */
     @Override
-    public void setCount(int count) {this.count = count;}
+    public void setCount(final int count) {
+        this.count = count; }
 
     /**
      * Increments Fries count by one.

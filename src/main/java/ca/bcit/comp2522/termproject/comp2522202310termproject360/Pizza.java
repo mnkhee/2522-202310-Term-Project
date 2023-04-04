@@ -6,6 +6,10 @@ package ca.bcit.comp2522.termproject.comp2522202310termproject360;
  * @version 2023
  */
 public class Pizza implements Item {
+    /**
+     * Initial cost of Pizza.
+     */
+    static final int INITIAL_COST = 10000;
     private double cost;
     private double passiveValue;
     private int count;
@@ -14,7 +18,7 @@ public class Pizza implements Item {
      * Constructs an object of type Pizza.
      */
     public Pizza() {
-        this.cost = 10000;
+        this.cost = INITIAL_COST;
         this.passiveValue = 0;
         this.count = 0;
     }
@@ -35,7 +39,7 @@ public class Pizza implements Item {
      * @param passiveValue amount to increment passive value by
      */
     @Override
-    public void incrementPassiveValue(double passiveValue) {
+    public void incrementPassiveValue(final double passiveValue) {
         this.passiveValue += passiveValue;
     }
 
@@ -45,7 +49,7 @@ public class Pizza implements Item {
      * @param passiveValue new passive value of Pizza
      */
     @Override
-    public void setPassiveValue(double passiveValue) {
+    public void setPassiveValue(final double passiveValue) {
         this.passiveValue = passiveValue;
     }
 
@@ -65,7 +69,7 @@ public class Pizza implements Item {
      * @param cost new cost of Pizza
      */
     @Override
-    public void setCost(double cost) {
+    public void setCost(final double cost) {
         this.cost = cost;
     }
 
@@ -85,7 +89,8 @@ public class Pizza implements Item {
      * @param count new number of Pizza owned
      */
     @Override
-    public void setCount(int count) {this.count = count;}
+    public void setCount(final int count) {
+        this.count = count; }
 
     /**
      * Increments Pizza count by one.
