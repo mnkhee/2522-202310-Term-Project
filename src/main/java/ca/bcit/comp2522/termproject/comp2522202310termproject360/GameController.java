@@ -20,7 +20,7 @@ import java.io.*;
  */
 public class GameController {
     HotDog hotdog = new HotDog();
-    Player player = new Player(0,1);
+    Player player = new Player(0, 1);
     Fries fries = new Fries();
     Pizza pizza = new Pizza();
     Poutine poutine = new Poutine();
@@ -98,9 +98,9 @@ public class GameController {
      * Integer type variable that is set to 0.
      *
      * <p>
-     *     Its purpose is to only let the incrementRevenue() method run once.
-     *     The method will only run if the value of returnToGame is 0. Once
-     *     the method is called, the returnToGame value is incremented.
+     * Its purpose is to only let the incrementRevenue() method run once.
+     * The method will only run if the value of returnToGame is 0. Once
+     * the method is called, the returnToGame value is incremented.
      * </p>
      */
     public int returnToGame = 0;
@@ -110,12 +110,6 @@ public class GameController {
      */
     public GameController() {
         this.clickerValue = player.getClickerValue(); // default = 1
-    }
-    public static GameController getInstance() {
-            if (instance == null) {
-            instance = new GameController();
-            }
-            return instance;
     }
 
     /**
@@ -167,7 +161,7 @@ public class GameController {
     @FXML
     protected void incrementCounter() {
         player.receiveRevenue(player.getClickerValue());
-        totalRevenue.setText("$"+player.totalRevenue());
+        totalRevenue.setText("$" + player.totalRevenue());
         checkForUpgradability();
     }
 
@@ -205,12 +199,12 @@ public class GameController {
     /**
      * Confirms if the user has enough revenue to buy a hot dog upgrade.
      * <p>
-     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
-     *     increments passive revenue gain by 1.25 and removes the value of hotdog.getCost() from
-     *     totalRevenue. It then makes the price of hot dog $5 more and increments the hot dog count
-     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
-     *     revenue is gained with each click). If the user does not have enough revenue to buy a
-     *     hot dog upgrade, then the method does not allow the user to buy the hot dog.
+     * Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     * increments passive revenue gain by 1.25 and removes the value of hotdog.getCost() from
+     * totalRevenue. It then makes the price of hot dog $5 more and increments the hot dog count
+     * by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     * revenue is gained with each click). If the user does not have enough revenue to buy a
+     * hot dog upgrade, then the method does not allow the user to buy the hot dog.
      * </p>
      */
     @FXML
@@ -234,12 +228,12 @@ public class GameController {
     /**
      * Confirms if the user has enough revenue to buy the fries upgrade.
      * <p>
-     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
-     *     increments passive revenue gain by 5.00 and removes the value of fries.getCost() from
-     *     totalRevenue. It then makes the price of fries $25 more and increments the fries count
-     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
-     *     revenue is gained with each click). If the user does not have enough revenue to buy the
-     *     fries upgrade, then the method does not allow the user to buy fries.
+     * Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     * increments passive revenue gain by 5.00 and removes the value of fries.getCost() from
+     * totalRevenue. It then makes the price of fries $25 more and increments the fries count
+     * by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     * revenue is gained with each click). If the user does not have enough revenue to buy the
+     * fries upgrade, then the method does not allow the user to buy fries.
      * </p>
      */
     @FXML
@@ -262,12 +256,12 @@ public class GameController {
     /**
      * Confirms if the user has enough revenue to buy the pizza upgrade.
      * <p>
-     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
-     *     increments passive revenue gain by 18.00 and removes the value of pizza.getCost() from
-     *     totalRevenue. It then makes the price of pizza $250 more and increments the pizza count
-     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
-     *     revenue is gained with each click). If the user does not have enough revenue to buy a
-     *     pizza upgrade, then the method does not allow the user to buy the upgrade.
+     * Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     * increments passive revenue gain by 18.00 and removes the value of pizza.getCost() from
+     * totalRevenue. It then makes the price of pizza $250 more and increments the pizza count
+     * by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     * revenue is gained with each click). If the user does not have enough revenue to buy a
+     * pizza upgrade, then the method does not allow the user to buy the upgrade.
      * </p>
      */
     @FXML
@@ -290,12 +284,12 @@ public class GameController {
     /**
      * Confirms if the user has enough revenue to buy the poutine upgrade.
      * <p>
-     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
-     *     increments passive revenue gain by 36.00 and removes the value of poutine.getCost() from
-     *     totalRevenue. It then makes the price of poutine $1300 more and increments the poutine count
-     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
-     *     revenue is gained with each click). If the user does not have enough revenue to buy a
-     *     poutine upgrade, then the method does not allow the user to buy the upgrade.
+     * Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     * increments passive revenue gain by 36.00 and removes the value of poutine.getCost() from
+     * totalRevenue. It then makes the price of poutine $1300 more and increments the poutine count
+     * by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     * revenue is gained with each click). If the user does not have enough revenue to buy a
+     * poutine upgrade, then the method does not allow the user to buy the upgrade.
      * </p>
      */
     @FXML
@@ -318,12 +312,12 @@ public class GameController {
     /**
      * Confirms if the user has enough revenue to buy the Chicken Strips upgrade.
      * <p>
-     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
-     *     increments passive revenue gain by 99.00 and removes the value of chicken.getCost() from
-     *     totalRevenue. It then makes the price of chicken strips $2600 more and increments the chicken count
-     *     by one. Finally, it increments the players click value by 0.5. (the click value is how much
-     *     revenue is gained with each click). If the user does not have enough revenue to buy the
-     *     chicken strips upgrade, then the method does not allow the user to buy the upgrade.
+     * Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     * increments passive revenue gain by 99.00 and removes the value of chicken.getCost() from
+     * totalRevenue. It then makes the price of chicken strips $2600 more and increments the chicken count
+     * by one. Finally, it increments the players click value by 0.5. (the click value is how much
+     * revenue is gained with each click). If the user does not have enough revenue to buy the
+     * chicken strips upgrade, then the method does not allow the user to buy the upgrade.
      * </p>
      */
     @FXML
@@ -346,12 +340,12 @@ public class GameController {
     /**
      * Confirms if the user has enough revenue to buy the ice cream upgrade.
      * <p>
-     *     Checks if the user has enough revenue to buy an upgrade. If they do, then this method
-     *     increments passive revenue gain by 173.00 and removes the value of icecream.getCost() from
-     *     totalRevenue. It then makes the price of ice cream $4500 more and increments the icecream count
-     *     by one. Finally, it increments the players click value by 1. (the click value is how much
-     *     revenue is gained with each click). If the user does not have enough revenue to buy a
-     *     ice cream upgrade, then the method does not allow the user to buy the upgrade.
+     * Checks if the user has enough revenue to buy an upgrade. If they do, then this method
+     * increments passive revenue gain by 173.00 and removes the value of icecream.getCost() from
+     * totalRevenue. It then makes the price of ice cream $4500 more and increments the icecream count
+     * by one. Finally, it increments the players click value by 1. (the click value is how much
+     * revenue is gained with each click). If the user does not have enough revenue to buy a
+     * ice cream upgrade, then the method does not allow the user to buy the upgrade.
      * </p>
      */
     @FXML
@@ -373,6 +367,7 @@ public class GameController {
 
     /**
      * Adds the passiveIncome from all upgrades and return's the total passive income.
+     *
      * @return total passive income.
      */
     public double passiveIncome() {
@@ -413,59 +408,61 @@ public class GameController {
     }
 
     @FXML
-    public void saveGame(ActionEvent event) {
-    try {
-        File file = new File("game_data.txt");
-        FileWriter fileWriter = new FileWriter(file);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+    public void saveGame(final ActionEvent event) {
+        try {
+            File file = new File("game_data.txt");
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        // Save player data
-        bufferedWriter.write(player.totalRevenue() + "\n");
-        System.out.println("Writing to file: " + player.totalRevenue());
-        bufferedWriter.write(player.getClickerValue() + "\n");
-        System.out.println("Player revenue set to: " + player.totalRevenue());
+            // Save player data
+            bufferedWriter.write(player.totalRevenue() + "\n");
+            System.out.println("Writing to file: " + player.totalRevenue());
+            bufferedWriter.write(player.getClickerValue() + "\n");
+            System.out.println("Player revenue set to: " + player.totalRevenue());
 
-        // Save hotdog data
-        bufferedWriter.write(hotdog.getCount() + "\n");
-        System.out.println("Writing to file: " + hotdog.getCount());
-        bufferedWriter.write(hotdog.getCost() + "\n");
-        System.out.println("Hotdog count set to: " + hotdog.getCount());
+            // Save hotdog data
+            bufferedWriter.write(hotdog.getCount() + "\n");
+            System.out.println("Writing to file: " + hotdog.getCount());
+            bufferedWriter.write(hotdog.getCost() + "\n");
+            System.out.println("Hotdog count set to: " + hotdog.getCount());
 
-        // Save fries data
-        bufferedWriter.write(fries.getCount() + "\n");
-        bufferedWriter.write(fries.getCost() + "\n");
+            // Save fries data
+            bufferedWriter.write(fries.getCount() + "\n");
+            bufferedWriter.write(fries.getCost() + "\n");
 
-        // Save pizza data
-        bufferedWriter.write(pizza.getCount() + "\n");
-        bufferedWriter.write(pizza.getCost() + "\n");
+            // Save pizza data
+            bufferedWriter.write(pizza.getCount() + "\n");
+            bufferedWriter.write(pizza.getCost() + "\n");
 
-        // Save poutine data
-        bufferedWriter.write(poutine.getCount() + "\n");
-        bufferedWriter.write(poutine.getCost() + "\n");
+            // Save poutine data
+            bufferedWriter.write(poutine.getCount() + "\n");
+            bufferedWriter.write(poutine.getCost() + "\n");
 
-        // Save chicken strips data
-        bufferedWriter.write(chicken.getCount() + "\n");
-        bufferedWriter.write(chicken.getCost() + "\n");
+            // Save chicken strips data
+            bufferedWriter.write(chicken.getCount() + "\n");
+            bufferedWriter.write(chicken.getCost() + "\n");
 
-        // Save ice cream data
-        bufferedWriter.write(icecream.getCount() + "\n");
-        bufferedWriter.write(icecream.getCost() + "\n");
+            // Save ice cream data
+            bufferedWriter.write(icecream.getCount() + "\n");
+            bufferedWriter.write(icecream.getCost() + "\n");
 
-        bufferedWriter.flush();
-        bufferedWriter.close();
-        fileWriter.close();
-        System.out.println("Game data saved to " + file.getAbsolutePath());
-    } catch (IOException e) {
-        e.printStackTrace();
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            fileWriter.close();
+            System.out.println("Game data saved to " + file.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}
+
     public void reset() {
         initialize();
-        totalRevenue.setText("$" +player.totalRevenue());
+        totalRevenue.setText("$" + player.totalRevenue());
         totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
     }
+
     @FXML
-    public void loadGame(ActionEvent event) {
+    public void loadGame(final ActionEvent event) {
         try {
             File file = new File("game_data.txt");
             FileReader fileReader = new FileReader(file);
@@ -475,8 +472,8 @@ public class GameController {
             String playerRevenueString = bufferedReader.readLine();
             double playerRevenue = Double.parseDouble(playerRevenueString);
             String clickerValueString = bufferedReader.readLine();
-            double clickerValue = Double.parseDouble(clickerValueString);
-            player = new Player(playerRevenue, clickerValue);
+            double clickerVal = Double.parseDouble(clickerValueString);
+            player = new Player(playerRevenue, clickerVal);
 
             // Load hotdog data
             String hotdogCountString = bufferedReader.readLine();
@@ -547,77 +544,5 @@ public class GameController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-    public void setHotDog(HotDog hotdog) {
-        this.hotdog = hotdog;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-        System.out.println("Player clicker value set to: " + player.getClickerValue());
-        System.out.println("Player revenue set to: " + player.totalRevenue());
-
-
-    }
-
-    public void setFries(Fries fries) {
-        this.fries = fries;
-        System.out.println("Fries count set to: " + fries.getCount());
-
-    }
-
-    public void setPizza(Pizza pizza) {
-        this.pizza = pizza;
-        System.out.println("pizza count set to: " + pizza.getCount());
-
-    }
-
-    public void setPoutine(Poutine poutine) {
-
-        this.poutine = poutine;
-        System.out.println("Poutine count set to: " + poutine.getCount());
-
-    }
-
-    public void setChickenStrips(ChickenStrips chicken) {
-        this.chicken = chicken;
-        System.out.println("Chicken strip count set to: " + chicken.getCount());
-
-    }
-
-    public void setIcecream(Icecream icecream) {
-        this.icecream = icecream;
-        System.out.println("Icecream count set to: " + icecream.getCount());
-
-    }
-
-    public HotDog getHotDog() {
-        return hotdog;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Fries getFries() {
-        return fries;
-    }
-
-    public Pizza getPizza() {
-        return pizza;
-    }
-
-    public Poutine getPoutine() {
-        return poutine;
-    }
-
-    public ChickenStrips getChickenStrips() {
-        return chicken;
-    }
-
-    public Icecream getIcecream() {
-        return icecream;
     }
 }
