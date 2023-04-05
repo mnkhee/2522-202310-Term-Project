@@ -11,28 +11,53 @@ public class Player {
     private double playerRevenue;
     private double playerClicker;
 
-    public Player(double playerRevenue, double playerClicker) {
+    /**
+     * Constructor for Player.
+     * @param playerRevenue double type variable that represents the player's revenue.
+     * @param playerClicker double type variable that represents the player's clicker value.
+     */
+    public Player(final double playerRevenue, final double playerClicker) {
         this.playerRevenue = playerRevenue;
         this.playerClicker = playerClicker;
     }
 
-    double totalRevenue() {
+    /**
+     * Returns the players total revenue.
+     * @return total revenue.
+     */
+    public double totalRevenue() {
         return this.playerRevenue;
     }
 
-    double getClickerValue() {
+    /**
+     * Returns the players clicker value.
+     * @return clicker value.
+     */
+    public double getClickerValue() {
         return this.playerClicker;
     }
 
-    void setClickerValue(double clickerValue) {
-        this.playerClicker = clickerValue;
+    /**
+     * Increments the players clickerValue by the inputted value.
+     * @param clickerValue double type variable that represents the players updated clickerValue.
+     */
+    public void setClickerValue(final double clickerValue) {
+        this.playerClicker += clickerValue;
     }
 
-    void receiveRevenue(double receiveValue) {
+    /**
+     * Adds the input value recieveValue to the player's revenue.
+     * @param receiveValue double type value that represents the player's revenue.
+     */
+    public void receiveRevenue(final double receiveValue) {
         this.playerRevenue += receiveValue;
     }
 
-    void decrementRevenue(double receiveValue) {
+    /**
+     * Decrements the input value recieveValue to the player's revenue.
+     * @param receiveValue double type value that represents the player's revenue.
+     */
+    public void decrementRevenue(final double receiveValue) {
         this.playerRevenue -= receiveValue;
     }
 
