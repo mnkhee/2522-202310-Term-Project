@@ -109,20 +109,25 @@ public class GameController {
      */
     static final int INITIAL_ICECREAM_PRICE = 250000;
 
-    HotDog hotdog = new HotDog();
-    Player player = new Player(0, 1);
-    Fries fries = new Fries();
-    Pizza pizza = new Pizza();
-    Poutine poutine = new Poutine();
-    ChickenStrips chicken = new ChickenStrips();
-    Icecream icecream = new Icecream();
-    Timeline timeline;
+    private final HotDog hotdog;
+
+    private Player player;
+
+    private final Fries fries;
+
+    private final Pizza pizza;
+
+    private final Poutine poutine;
+
+    private final ChickenStrips chicken;
+
+    private final Icecream icecream;
 
     /**
      * totalRevenue label.
      */
     @FXML
-    public Label totalRevenue;
+    private Label totalRevenue;
 
     /**
      * purchaseText label.
@@ -133,13 +138,13 @@ public class GameController {
     /**
      * Hotdog button.
      */
-    public Button hotdogButton;
+    private Button hotdogButton;
 
     /**
      * totalPassiveIncome Label. Represents the user's passive income.
      */
     @FXML
-    public Label totalPassiveIncome;
+    private Label totalPassiveIncome;
 
     /**
      * initialize Button.
@@ -193,13 +198,20 @@ public class GameController {
      * the method is called, the returnToGame value is incremented.
      * </p>
      */
-    public int returnToGame = 0;
+    private int returnToGame = 0;
 
     /**
      * Constructor for GameController.
      */
     public GameController() {
+        this.player = new Player(0, 1);
         this.clickerValue = player.getClickerValue(); // default = 1
+        this.hotdog = new HotDog();
+        this.fries = new Fries();
+        this.pizza = new Pizza();
+        this.poutine = new Poutine();
+        this.chicken = new ChickenStrips();
+        this.icecream = new Icecream();
     }
 
     /**
@@ -481,7 +493,7 @@ public class GameController {
             returnToGame++;
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
             tooltips();
-            timeline = new Timeline(new KeyFrame(Duration.millis(INCREMENT_TIMEFRAME), actionEvent -> {
+            Timeline timeline = new Timeline(new KeyFrame(Duration.millis(INCREMENT_TIMEFRAME), actionEvent -> {
                 checkForUpgradability();
                 player.receiveRevenue(hotdog.getPassiveIncome());
                 player.receiveRevenue(fries.getPassiveIncome());
