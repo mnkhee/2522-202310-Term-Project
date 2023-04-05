@@ -37,11 +37,11 @@ public class Poutine implements Item {
     /**
      * Increments passive value of Poutine.
      *
-     * @param passiveValue amount to increment passive value by
+     * @param passive amount to increment passive value by
      */
     @Override
-    public void incrementPassiveValue(final double passiveValue) {
-        this.passiveValue += passiveValue;
+    public void incrementPassiveValue(final double passive) {
+        this.passiveValue += passive;
     }
 
     /**
