@@ -9,7 +9,7 @@ package ca.bcit.comp2522.termproject.comp2522202310termproject360;
  */
 public class Player {
     private double playerRevenue;
-    private int playerClicker;
+    private double playerClicker;
 
     public Player(double playerRevenue, double playerClicker) {
         this.playerRevenue = playerRevenue;
@@ -20,11 +20,11 @@ public class Player {
         return this.playerRevenue;
     }
 
-    int getClickerValue() {
+    double getClickerValue() {
         return this.playerClicker;
     }
 
-    void setClickerValue(int clickerValue) {
+    void setClickerValue(double clickerValue) {
         this.playerClicker = clickerValue;
     }
 

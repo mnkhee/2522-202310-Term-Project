@@ -27,29 +27,83 @@ public class GameController {
     ChickenStrips chicken = new ChickenStrips();
     Icecream icecream = new Icecream();
     Timeline timeline;
+
+    /**
+     * totalRevenue label.
+     */
     @FXML
     public Label totalRevenue;
+
+    /**
+     * purchaseText label.
+     */
     @FXML
     private Label purchaseText;
+
+    /**
+     * Hotdog button.
+     */
     public Button hotdogButton;
 
+    /**
+     * totalPassiveIncome Label. Represents the user's passive income.
+     */
     @FXML
     public Label totalPassiveIncome;
+
+    /**
+     * initialize Button.
+     */
     @FXML
     private Button initialize;
     private static GameController instance;
 
-
-    // upgradables
+    /**
+     * Hotdog upgrade button.
+     */
     public Button hotdogUpgrade;
+
+    /**
+     * Fries upgrade button.
+     */
     public Button friesUpgrade;
+
+    /**
+     * Poutine upgrade button.
+     */
     public Button poutineUpgrade;
+
+    /**
+     * Pizza upgrade button.
+     */
     public Button pizzaUpgrade;
+
+    /**
+     * Icecream upgrade button.
+     */
     public Button icecreamUpgrade;
+
+    /**
+     * Chicken Strips upgrade button.
+     */
     public Button chickenUpgrade;
+
+    /**
+     * Double type variable that represents the user's clicker value.
+     */
     @FXML
     public double clickerValue;
-    int test = 0;
+
+    /**
+     * Integer type variable that is set to 0.
+     *
+     * <p>
+     *     Its purpose is to only let the incrementRevenue() method run once.
+     *     The method will only run if the value of returnToGame is 0. Once
+     *     the method is called, the returnToGame value is incremented.
+     * </p>
+     */
+    public int returnToGame = 0;
 
     /**
      * Constructor for GameController.
@@ -338,8 +392,8 @@ public class GameController {
      */
     @FXML
     protected void incrementRevenue() {
-        if (test == 0) {
-            test++;
+        if (returnToGame == 0) {
+            returnToGame++;
             totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
             tooltips();
             timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> {
