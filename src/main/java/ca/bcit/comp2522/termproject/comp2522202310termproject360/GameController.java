@@ -9,8 +9,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
-import java.io.*;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
 /**
  * GameController.
  *
@@ -407,6 +412,11 @@ public class GameController {
         }
     }
 
+    /**
+     * Saves game to text file with required data.
+     *
+     * @param event triggered by handler
+     */
     @FXML
     public void saveGame(final ActionEvent event) {
         try {
@@ -455,12 +465,20 @@ public class GameController {
         }
     }
 
+    /**
+     * Resets game state so that save values can populate the current scene.
+     */
     public void reset() {
         initialize();
         totalRevenue.setText("$" + player.totalRevenue());
         totalPassiveIncome.setText("Passive Income: $" + passiveIncome());
     }
 
+    /**
+     * Loads game from text file to current scene with relevant data.
+     *
+     * @param event triggered by handler
+     */
     @FXML
     public void loadGame(final ActionEvent event) {
         try {
