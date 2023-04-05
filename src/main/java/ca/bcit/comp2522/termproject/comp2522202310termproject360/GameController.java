@@ -475,7 +475,7 @@ public class GameController {
             String playerRevenueString = bufferedReader.readLine();
             double playerRevenue = Double.parseDouble(playerRevenueString);
             String clickerValueString = bufferedReader.readLine();
-            int clickerValue = Integer.parseInt(clickerValueString);
+            double clickerValue = Double.parseDouble(clickerValueString);
             player = new Player(playerRevenue, clickerValue);
 
             // Load hotdog data

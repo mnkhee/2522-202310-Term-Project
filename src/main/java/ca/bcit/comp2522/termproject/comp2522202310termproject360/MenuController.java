@@ -71,8 +71,8 @@ public class MenuController implements Initializable {
     @FXML
     private void startGame(final ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("game-view.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
