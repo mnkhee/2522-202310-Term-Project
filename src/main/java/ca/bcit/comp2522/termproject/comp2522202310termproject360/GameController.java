@@ -108,6 +108,43 @@ public class GameController {
      * Initial icecream price.
      */
     static final int INITIAL_ICECREAM_PRICE = 250000;
+    private static GameController instance;
+
+    /**
+     * Hotdog upgrade button.
+     */
+    public Button hotdogUpgrade;
+
+    /**
+     * Fries upgrade button.
+     */
+    public Button friesUpgrade;
+
+    /**
+     * Poutine upgrade button.
+     */
+    public Button poutineUpgrade;
+
+    /**
+     * Pizza upgrade button.
+     */
+    public Button pizzaUpgrade;
+
+    /**
+     * Icecream upgrade button.
+     */
+    public Button icecreamUpgrade;
+
+    /**
+     * Chicken Strips upgrade button.
+     */
+    public Button chickenUpgrade;
+
+    /**
+     * Double type variable that represents the user's clicker value.
+     */
+    @FXML
+    public double clickerValue;
 
     private final HotDog hotdog;
 
@@ -151,43 +188,7 @@ public class GameController {
      */
     @FXML
     private Button initialize;
-    private static GameController instance;
 
-    /**
-     * Hotdog upgrade button.
-     */
-    public Button hotdogUpgrade;
-
-    /**
-     * Fries upgrade button.
-     */
-    public Button friesUpgrade;
-
-    /**
-     * Poutine upgrade button.
-     */
-    public Button poutineUpgrade;
-
-    /**
-     * Pizza upgrade button.
-     */
-    public Button pizzaUpgrade;
-
-    /**
-     * Icecream upgrade button.
-     */
-    public Button icecreamUpgrade;
-
-    /**
-     * Chicken Strips upgrade button.
-     */
-    public Button chickenUpgrade;
-
-    /**
-     * Double type variable that represents the user's clicker value.
-     */
-    @FXML
-    public double clickerValue;
 
     /**
      * Integer type variable that is set to 0.
